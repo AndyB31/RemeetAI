@@ -1,7 +1,8 @@
+import sys
 import whisper
 from typing import Type
 
-def speech_to_text(audiofile: str) -> Type[whisper.DecodingResult]:
+def speech_to_text(audiofile: str):
   model = whisper.load_model("small")
 
   audio = whisper.load_audio(audiofile)
@@ -12,8 +13,17 @@ def speech_to_text(audiofile: str) -> Type[whisper.DecodingResult]:
   _, probs = model.detect_language(mel)
   print(f"Detected language: {max(probs, key=probs.get)}")
 
-  options = whisper.DecodingOptions()
+  options = whisper.DecodingOptions(fp16 = False)
   result = whisper.decode(model, mel, options)
 
+  text = model.transcribe(audiofile)
+
   # print(result.text)
-  return (result)
+  return (result, text)
+
+def main():
+  audiofile = sys.argv[1]
+  print (speech_to_text(audiofile)[1]['text'])
+
+if __name__ == "__main__":
+  main()

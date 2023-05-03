@@ -11,7 +11,6 @@ def extract_audio(filepath: str, outfilepath: str = None) -> Type[mp.AudioFileCl
   return clip.audio
 
 def main():
-  print (sys.argv)
   if len(sys.argv) < 2:
     print("Please provide the filepath.")
     sys.exit(1)
