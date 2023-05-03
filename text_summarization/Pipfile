@@ -1,0 +1,39 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "pytorch"
+verify_ssl = false
+name = ""
+
+[[source]]
+url = "pytorch"
+verify_ssl = false
+name = ""
+
+[packages]
+datasets = "*"
+pandas = "*"
+numpy = "*"
+matplotlib = "*"
+seaborn = "*"
+nltk = "*"
+contractions = "*"
+gensim = "*"
+rouge = "*"
+tensorflow = "*"
+transformers = "*"
+jupyter = "*"
+notebook = "*"
+pytextrank = "*"
+spacy = "*"
+openai = "*"
+sentencepiece = "*"
+torch = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
