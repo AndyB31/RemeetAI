@@ -3,16 +3,6 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 name = "pypi"
 
-[[source]]
-url = "pytorch"
-verify_ssl = false
-name = ""
-
-[[source]]
-url = "pytorch"
-verify_ssl = false
-name = ""
-
 [packages]
 datasets = "*"
 pandas = "*"
@@ -31,7 +21,6 @@ pytextrank = "*"
 spacy = "*"
 openai = "*"
 sentencepiece = "*"
-torch = "*"
 
 [dev-packages]
 
