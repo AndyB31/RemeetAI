@@ -18,7 +18,7 @@ def main():
   try:
     outfilepath = sys.argv[2]
   except:
-    outfilepath = filepath.split('.')[0] + '.mp3'
+    outfilepath = ''.join(filepath.split('.')[:-1]) + '.mp3'
   extract_audio(filepath, outfilepath)
 
 if __name__ == '__main__':

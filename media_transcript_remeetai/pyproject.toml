@@ -1,0 +1,23 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "media_transcript_remeetai"
+version = "0.0.4"
+authors = [
+  { name="Lorenzo Del Medico", email="lorenzodelmedico@gmail.com" },
+  { name="Andy Begin", email="andy.begin@pm.me" }
+]
+description = "Transcript media (video and audio) using whisper"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/AndyB31/RemeetAI"
+"Bug Tracker" = "https://github.com/AndyB31/RemeetAI/issues"
