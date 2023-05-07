@@ -1,0 +1,9 @@
+fonction de besoin et par conséquent, ça permet aux clients d'optimiser leurs coûts.
+Voilà, c'est fini, peut-être on peut avoir 2 contrôles sur les 5 ans, quelque chose comme ça.
+Et en plus de ça, on va avoir des performances à la seconde de près, on ne veut pas avoir des performances, enfin préparer le chargement aujourd'hui pour l'an demain, ça ne nous convient pas en fait.
+On va prendre un cas simple, où les données, il n'y a pas de mise à jour après la journée.
+Et à partir de premier mois, ça va devenir une fois par an.
+Après, je souhaite qu'au bout d'un mois, tous mes données journalier, ils passent dans un notre bucket, ce bucket là, il appartient à une autre classe de disponibilité qui est beaucoup moins cher.
+Alors, c'est-à-dire, je ne dois pas développer quelque chose qui va me prendre mes données automatiquement pour les faire.
+Et je rappelle quand même, en fait, pour que vous voyez l'intérêt, pour avoir plus, pour mieux comprendre l'intérêt, en fait, le cours entre tous d'essayer donc une base de données et faire un schéma similaire, faire un choix similaire, il peut aller de quelques centaines ou quelques milliers d'euros à quelques millions d'euros.
+Bon, tous les clients n'ont pas une charge de plusieurs millions d'euros sur leur sourceur, mais, mais, enfin, personnellement, j'ai vu des, j'ai travaillé sur des projets où ce genre, enfin, c'est pas exactement cette architecture, là, c'est un exemple très simple.

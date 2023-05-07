@@ -1,0 +1,9 @@
+Oui, il suffit juste de rentrer des dates par exemple au début de la service.
+C'est quelque chose qui est pris en considération, c'est juste de la conf.
+C'est juste de la conf.
+Donc j'ai besoin, je peux dire, pour ma base, je peux avoir une base de données de 100 Giga seulement, qui va certainement coûter moins cher de plusieurs terrains, des centaines, même des terrains.
+Parce que voilà, on a, je ne sais pas, 100 Giga par jour, 100 Giga x 5 ans, il faut avoir une base de données qui contient 1 x 365 x 5 Giga.
+Et là, le coût sur la base de données, il se réduit juste à une journée, le coût sur le S3 première classe qui est plus cher que la deuxième classe, il sera sur un mois.
+Non, en fait, si je vous parle de ma, mon expérience concrète, on avait, si pas ici, une base de données relationnelle, on avait Elasticsearch et ici, c'était pas un seul mois, c'était, je pense, c'était trois mois.
+Alors je choisis une classe de disponibilité.
+Et à partir de premier mois, ça va devenir une fois par an.

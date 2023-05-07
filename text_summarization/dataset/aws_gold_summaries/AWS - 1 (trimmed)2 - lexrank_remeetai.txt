@@ -1,0 +1,9 @@
+ Donc là vraiment ça en termes de disponibilité, c'est pas énorme en fait, c'est pas loin d'être les données qui sont requettées tous les jours par exemple
+ Donc nos données doivent être conservées 5 ans avec la possibilité d'avoir d'être consulter une ou deux fois sur l'année et pour la disponibilité, on n'a pas besoin de l'avoir le jour même, on a besoin de les avoir peut-être pour le long de l'an
+ On va faire un audit demain et voilà, ils vont consulter ces données et le contrôle, ils prennent par exemple 3 jours et c'est fini
+ Et là, le coût sur la base de données, il se réduit juste à une journée, le coût sur le S3 première classe qui est plus cher que la deuxième classe, il sera sur un mois
+ Alors si au même temps je dis pour S3, je dis mais non, moi j'ai encore d'autres données qui sont quand même requettables tous les jours
+ Alors, c'est-à-dire, je ne dois pas développer quelque chose qui va me prendre mes données automatiquement pour les faire
+ D'accord ? Alors premier jour, nos données arrivent en base
+ On a des données par exemple, on les garde pour des fins légaux, c'est-à-dire quoi ? C'est-à-dire on a une contrainte légale, on doit garder les données pendant 5 ans
+ Alors donc, si on garde tous nos données pendant les cinq ans sur la base donnée, ça va coûter très très cher
