@@ -1,8 +1,9 @@
 import sys
-from .stt import whisper_test
+from .stt import whisper_stt
 from .utils import extract_audio
+from .clean_text import clean_duplicate
 
-def trancript(mediafile, audio = False):
+def trancript(mediafile: str, audio: bool = False):
   if not audio:
     audiofile = '.'.join(mediafile.split('.')[:-1]) + '.mp3'
     audio = extract_audio.extract_audio(mediafile, audiofile)
@@ -10,17 +11,19 @@ def trancript(mediafile, audio = False):
     audiofile = mediafile
   print (f"audiofile: {audiofile}")
 
-  transcript1, transcript2 = whisper_test.speech_to_text(audiofile)
+  transcript1, transcript2, t_en = whisper_stt.speech_to_text(audiofile)
 
-  print(transcript1.text, '[2]:\n', transcript2['text'])
-  return (transcript1, transcript2)
+  t_clean = clean_duplicate.remove_duplicates(transcript2["text"])
+  t_en_clean = clean_duplicate.remove_duplicates(t_en["text"])
 
-def main():
-  if len(sys.argv) < 2:
-    sys.exit(1)
+  return (t_clean, t_en_clean, transcript1, transcript2)
 
-  t1, t2 = trancript(sys.argv[1])
+# def main():
+#   if len(sys.argv) < 2:
+#     sys.exit(1)
+
+#   t, t1, t2 = trancript(sys.argv[1])
 
 
-if __name__ == '__main__':
-  main()
+# if __name__ == '__main__':
+#   main()
