@@ -13,7 +13,8 @@ def trancript(mediafile: str, audio: bool = False):
 
   transcript1, transcript2, t_en = whisper_stt.speech_to_text(audiofile)
 
-  t_clean = clean_duplicate.remove_duplicates(transcript2["text"])
+  t_clean = "tc"
+  # t_clean = clean_duplicate.remove_duplicates(transcript2["text"])
   t_en_clean = clean_duplicate.remove_duplicates(t_en["text"])
 
   return (t_clean, t_en_clean, transcript1, transcript2)

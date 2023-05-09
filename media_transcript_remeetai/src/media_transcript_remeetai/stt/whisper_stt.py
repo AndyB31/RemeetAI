@@ -14,10 +14,12 @@ def speech_to_text(audiofile: str):
   print(f"Detected language: {max(probs, key=probs.get)}")
 
   options = whisper.DecodingOptions(fp16 = False)
-  result = whisper.decode(model, mel, options)
+  # result = whisper.decode(model, mel, options)
+  result = None
 
   options = whisper.DecodingOptions()
-  text = model.transcribe(audiofile)
+  # text = model.transcribe(audiofile)
+  text = "fr"
   text_en = model.transcribe(audiofile, language="en")
 
   # print(result.text)
