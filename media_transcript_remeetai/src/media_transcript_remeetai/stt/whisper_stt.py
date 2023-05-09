@@ -1,6 +1,7 @@
 import sys
 import whisper
 from typing import Type
+from ..utils import debug
 
 def speech_to_text(audiofile: str):
   model = whisper.load_model("small")
@@ -11,7 +12,7 @@ def speech_to_text(audiofile: str):
   mel = whisper.log_mel_spectrogram(audio).to(model.device)
 
   _, probs = model.detect_language(mel)
-  print(f"Detected language: {max(probs, key=probs.get)}")
+  debug.print_debug(f"Detected language: {max(probs, key=probs.get)}")
 
   options = whisper.DecodingOptions(fp16 = False)
   # result = whisper.decode(model, mel, options)

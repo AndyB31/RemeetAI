@@ -9,7 +9,6 @@ seaborn
 sumy
 pytextrank
 spacy
-torch
 datasets
 transformers
 rouge

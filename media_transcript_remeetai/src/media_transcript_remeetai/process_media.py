@@ -2,6 +2,7 @@ import sys
 from .stt import whisper_stt
 from .utils import extract_audio
 from .clean_text import clean_duplicate
+from .utils import debug
 
 def trancript(mediafile: str, audio: bool = False):
   if not audio:
@@ -9,7 +10,7 @@ def trancript(mediafile: str, audio: bool = False):
     audio = extract_audio.extract_audio(mediafile, audiofile)
   else:
     audiofile = mediafile
-  print (f"audiofile: {audiofile}")
+  debug.print_debug(f"audiofile: {audiofile}")
 
   transcript1, transcript2, t_en = whisper_stt.speech_to_text(audiofile)
 

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "media_transcript_remeetai"
-version = "0.0.10"
+version = "0.1.1"
 authors = [
   { name="Lorenzo Del Medico", email="lorenzodelmedico@gmail.com" },
   { name="Andy Begin", email="andy.begin@pm.me" }
