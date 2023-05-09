@@ -159,4 +159,10 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
+# text_summarization 
+
+text_summarization/open_ai_api_key.txt
+
+# others
+
 tests/

@@ -1,0 +1,1 @@
+La première classe de stockage est la classe standard. Ses caractéristiques sont une durabilité, disponibilité et performance optimale, avec un coût élévé. C'est fait pour des données qui sont très fréqumement consultées. 

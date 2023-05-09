@@ -1,0 +1,7 @@
+Aujourd'hui c'est cours à distance cela nécessite de l'intéractivité pour que cela se dérouile dans les meilleures conditions. 
+
+Une solution d'archivage est utile à un système d'information pour conserver des données auquel on accède pas tous les jours. Cela permet de faire des économies de coût/espace. 
+
+S3 est un service de stockage de données moins cher qu'une base de données traditionnels. C'est un bon compromis entre disponibilité des données et optimisation des coûts de stockage. Il dispose d'une scalabilité flexible, avec une haute sécurité et une capatibilité de stockage illimité avec un maximum par fichier jusqu'à 5 terra (terres). Le stockage de S3 se fait dans des buckets (baguettes). Un bucket c'est une organisation logique des données, qui dispose d'un nommage unique sur l'ensemble de la plateforme AWS au niveau mondial. Au niveau de la disponibilité c'est 99.9% de disponibilité ce qui représente moins d'une journée complète sur 3 ans. Le risque de perdre une donnée est encore plus infime.
+
+Un fichier peut se dire objet dans le contexte AWS, et avoir un versionning si on l'active. Il peut aussi avoir des ressources comme les ACL, qui sont une définition de droit. S3 dispose aussi de différente classes de disponibilité qui permettent d'avoir différents niveaux de disponibilité. 

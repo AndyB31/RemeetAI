@@ -1,0 +1,70 @@
+de la
+pour
+merci
+alors
+alors je vous l'ai dit mais je le répète le cours à distance ça nécessite encore plus
+d'interactivité de votre part pour que pour qu'il se déroule dans les meilleures conditions
+et pour que vous vous en profitez au maximum d'accord donc je compte sur vous pour poser des
+questions il n'y a jamais de question bête tout est intéressant toute toute interaction
+et il ne ça va que aider le cours
+je ferme ce bazar derrière moi
+oui du coup donc
+donc aujourd'hui on va passer au chapitre suivant
+alors si je vous pose la question pourquoi dans un système de d'information pourquoi
+dans notre architecture on peut avoir besoin d'une solution d'archivage
+alors pour la solution d'archivage ça serait quand on a des données auquel on accède pas
+tous les jours et donc on gagne de l'espace ou des trimmons des performances d'accès
+oui voilà on réduit on cherche à avoir une solution de stockage qui est à faible
+coût tout en conservant le données au cas où et et tout en aussi en faisant des économies
+on va pas trop dépenser juste pour conserver des données que potentiellement on va jamais son
+serveur mais on est contraint de les garder au cas où du coup les sides je vous les
+présentez je pense pas si on est arrivé à quel stade pour les sides juste le 38
+ça permet de rappeler le contexte je le fais rapidement donc l'idée c'est ça donc voilà
+donc c'est un service de stockage de données c'est encore une fois c'est comme les bases
+données avec la différence c'est que les bases données souvent ça coûte plus cher et ils sont
+destinés pour d'avoir des données qui soit mis à jour qui soit qui soit consultable souvent très
+fréquemment voilà et ça coûte plus cher que les solutions d'archivage donc le le s3 ça permet
+de garder une bonne disponibilité par rapport ça on le dit par rapport à d'autres solutions
+d'archivage évidemment c'est pas c'est pas les mêmes pertes des bases données donc voilà avec
+la pouf avec une scalabilité flexible avec la sécurité avec les performances donc au niveau
+des des caractéristiques les caractéristiques donc avec s3 on est capable de stocker des fichiers
+jusqu'à la taille de 5 terres le stockage il est illimité les stockage il est fait dans des
+baguettes les baguettes c'est les baguettes c'est juste une organisation logique de nos données c'est
+comme les répertoires sur la machine voilà le name space c'est universel je vous rappelle que je
+vous ai dit cette cette information c'est à dire quoi c'est à dire si moi je choisis un nom de
+baguette enfin c'est unique pas seulement dans mon name space par rapport à mon user assign non
+c'est pas par rapport à mon alias seulement mais c'est unique à l'échelle mondiale à l'échelle
+AWS voilà à l'échelle universelle c'est à dire quoi si moi je faisais un nom aucun parmi vous
+qui peut le choisir voilà chacun de vous lorsqu'après dans le tp il va tenter de faire la création
+d'un baguette il va se rendre compte qu'il ne peut le faire qu'il ne peut le faire qu'à condition
+qu'il peut il ne peut créer des baguettes qu'avec des noms qui n'ont jamais été créés en
+par quelqu'un d'autre mais c'est quoi d'utilité de faire ça c'est un choix c'est un choix de
+conception de la solution ils ont dit c'est universel ils ont dit c'est universel j'ai pas
+enfin en fait si nous par exemple on souhaite réserver un name space propre à nous bah c'est
+simple on fait un baguette qu'on l'appelle par exemple osgi yabd3 et et et et et on met
+tous nos données sous ce baguette et du coup donc on a le baguette réservée à nous personne
+d'autre ne peut l'utiliser et et voilà ça permet c'est une façon que je trouve flexible pour
+choisir les noms des des baguettes et pour que pour se réserver aussi des noms des baguettes
+alors au niveau des des gaanties donc il offre 99,9% de disponibilité du données donc voilà c'est
+à dire quoi c'est à dire sur une année on risque d'avoir un sur fin sur mille jours on risque d'avoir
+un jour de un jour d'indisponibilité au total au total sur mille jours donc c'est à dire sur trois
+ans on n'a pas un risque d'avoir un jour d'indisponibilité et pour la durabilité c'est c'est encore
+voilà très précis c'est à dire quoi c'est à dire le risque de perdre une donnée ou d'avoir un
+problème sur une donnée fin ça représente un fois 10 puissance au moins moins 12 ou moins 13
+même pour son risque donc c'est très très très très limité comme risque alors la la
+maintenant la notion d'objet l'objet ou fichier en fait on dit objet ou bien fichier et là non
+et là un contenu sont le contenu c'est la data c'est la séquence de bit et tout la
+version il a une version il peut avoir une version si on choisit d'activer le versioning
+et il peut avoir d'autres méthodes à la souplementaire donc il peut avoir aussi des
+ressources particulièrement les acl les acl ce sont des droits en fait ce sont des c'est une
+définition des droits sur les ressources alors les fonctionnalités alors je reviens à la remarque
+que j'ai dit c'est que les solutions d'archivage ils sont faites pour les données qui sont pas
+fréquemment consultables qui sont pas fréquemment consultables et et encore plus et encore moins
+fréquemment mis à jour c'est ça en fait les solutions d'archivage et et l'avantage avec
+elle soit c'est que cette disponibilité n'est pas binaire en fait n'est pas binaire c'est pas c'est
+pas soit des données qui sont qui sont hautement disponibles sur des bases de données soit ils sont
+ils sont archivés du coup ils sont beaucoup moins disponibles voilà ils peuvent être chargés après
+une heure et on peut les requêter une ou deux fois par jour non c'est pas aussi c'est pas du tout
+binaire mais plutôt il y a une disponibilité archique dans le cours dans le chapitre suivant
+on va parler juste après de de des classes des classes de disponibilité de classe de
+au niveau de s3 et ce qui permet d'avoir des disponibilités différentes
