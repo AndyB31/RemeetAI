@@ -11,17 +11,17 @@
     <p>Warning : A ce stade de développement, l'outil ne peut pas remplacer la qualité d'un résumé produit par un être humain, il est là en support/soutien.</p>
     <div class="center">
         <div class="left">
-            <form action="{{ url_for('home') }}" method="POST">
+            <form action="http://127.0.0.1:5000/summarize/" method="POST" enctype = "multipart/form-data">
                 <h2>Renseignez votre texte de référence : </h2>
                 <textarea name="message" rows="8" cols="125">
                 Copiez votre texte de référence ici.
                 </textarea>
     
                 <h2>Ou obtenez votre résumé à partir d'un format vidéo/audio : </h2>
-                <input type="file" name="audio_file">
+                <input type="file" name="file">
     
                 <h2>Choisissez votre méthode de résumé et validez !</h2>
-                <select name="method">
+                <select name="tool">
                     {% for item in items %}
                         <option value="{{ item }}">{{ item }}</option>
                     {% endfor %}
@@ -36,7 +36,12 @@
                 Le résultat va s'afficher ici...!
             </textarea>
         </div>
-       
+        <script>
+
+
+            // var summarize_text = summarize_text
+            // document.getElementById("myTextArea").value = summarize_text;
+        </script>
        
     </div>
 </body>

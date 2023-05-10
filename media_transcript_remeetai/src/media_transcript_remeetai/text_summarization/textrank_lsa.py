@@ -23,7 +23,7 @@ nltk.download("punkt")
 file_name = ("./AWS - 1 (trimmed)2.txt")
 
 def textrank_lsa_sum(filename: str = None, text_base: str = None):
-    if not filename and not text:
+    if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     if filename:
         # Loading the text file as a list of sentences
