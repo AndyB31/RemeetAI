@@ -9,10 +9,10 @@ seaborn
 sumy
 pytextrank
 spacy
-torch
 datasets
 transformers
 rouge
 sentencepiece
 openai
 lexrank
+Flask

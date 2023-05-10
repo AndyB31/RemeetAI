@@ -1,13 +1,14 @@
 # https://iq.opengenus.org/lexrank-text-summarization/
 
 # Importing the required packages
+from ..utils import debug
 from lexrank import STOPWORDS, LexRank
 
 # Setting path to the text file
 # file_name = ("./AWS - 1 (trimmed)2.txt")
 
 def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None):
-    if not filename and not text:
+    if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     
     if filename:
@@ -35,7 +36,7 @@ def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None
     # Calculating the average sentence length in words
     average_length = num_words / num_sentences
 
-    print(average_length)
+    debug.print_debug(average_length)
 
     user_summary_size_sentence = 9 #user input parameter
 
@@ -55,5 +56,5 @@ def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None
           fp.write('\n'.join(summary))
 
     # Printing the summary
-    return ('\n'.join(summary))
+    return '\n'.join(summary)
 

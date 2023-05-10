@@ -9,7 +9,6 @@ Original file is located at
 
 from transformers import pipeline, set_seed
 from transformers import AutoTokenizer
-from ..utils import debug
 import re
 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
@@ -29,7 +28,7 @@ def bart_sum(filename: str = None, text_base: str = None):
     #remove not usefull white space 
     text = re.sub("\s+", " ", text)
     # Print the variable
-    debug.print_debug(text)
+    print(text)
 
     token_ids = tokenizer.encode_plus(text, max_length=1000, truncation=True)
     short_text_truncated = tokenizer.decode(token_ids["input_ids"]) # decode
@@ -37,8 +36,6 @@ def bart_sum(filename: str = None, text_base: str = None):
 
     #for prototype use this one 
     summarize_high_beams = summarizer(short_text_truncated, do_sample=False, num_beams=7, num_return_sequences=1)
-    debug.print_debug(summarize_high_beams)
+    print(summarize_high_beams)
     summarize_low_beams = summarizer(short_text_truncated, do_sample=False, num_beams=3, num_return_sequences=2)
-    debug.print_debug(summarize_low_beams)
-
-    return summarize_high_beams
+    print(summarize_low_beams)
