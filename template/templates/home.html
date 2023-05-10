@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href='/staticFiles/main.css' />
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>RemeetAI : ton outil de résumé intelligent</h1>
+    <p>Grâce à l'outil RemeetAI tu peux obtenir en quelques secondes ou minutes (selon la taille de ton fichier et la méthode sélectionnée) un résumé directement à partir d'une vidéo ou d'un audio.</p>
+    <p>Tu as manqué une réunion ? Tu manques de temps pour réaliser le compte-rendu de ton point quotidien ? RemeetAI est là pour ça.</p>
+    <p>Warning : A ce stade de développement, l'outil ne peut pas remplacer la qualité d'un résumé produit par un être humain, il est là en support/soutien.</p>
+    <div class="center">
+        <div class="left">
+            <form action="{{ url_for('home') }}" method="POST">
+                <h2>Renseignez votre texte de référence : </h2>
+                <textarea name="message" rows="8" cols="125">
+                Copiez votre texte de référence ici.
+                </textarea>
+    
+                <h2>Ou obtenez votre résumé à partir d'un format vidéo/audio : </h2>
+                <input type="file" name="audio_file">
+    
+                <h2>Choisissez votre méthode de résumé et validez !</h2>
+                <select name="method">
+                    {% for item in items %}
+                        <option value="{{ item }}">{{ item }}</option>
+                    {% endfor %}
+                </select>
+    
+                <hr>
+                <input type="submit" value="Obtenir mon résumé automatique">
+            </form>
+        </div>
+        <div class="right">
+            <textarea name="message" rows="16" cols="125">
+                Le résultat va s'afficher ici...!
+            </textarea>
+        </div>
+       
+       
+    </div>
+</body>
+</html>
