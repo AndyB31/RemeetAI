@@ -13,10 +13,10 @@
                 document.getElementById("dropdown sentences").style.display="block";
                 document.getElementById("submit1").value = "extract";
                 document.getElementById("submit1").innerHTML = "Extraction de sentences";
-            } else if (value === "paraphrase") {
+            } else if (value === "synthese") {
                 document.getElementById("dropdown sentences").style.display="none"
-                document.getElementById("submit1").value = "paraphrase";
-                document.getElementById("submit1").innerHTML = "Paraphraser";
+                document.getElementById("submit1").value = "synthese";
+                document.getElementById("submit1").innerHTML = "Génération de synthèses";
             }
         };
         function changeText(item) {
@@ -90,8 +90,8 @@
                     <label onclick="myFunction('extract')" class="btn btn-primary active">
                       <input  type="radio" name="options" id="option1" complete="off" checked value="extract"> Extraction de sentences
                     </label>
-                    <label onclick="myFunction('paraphrase')" class="btn btn-primary">
-                      <input  type="radio" name="options" id="option2" autocomplete="off" value="paraphrase"> Génération de paragraphes
+                    <label onclick="myFunction('synthese')" class="btn btn-primary">
+                      <input  type="radio" name="options" id="option2" autocomplete="off" value="synthese"> Génération de synthèses
                     </label>
                 </div>
                 <div class="dropdown mt-2" id="dropdown sentences">
