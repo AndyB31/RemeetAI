@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href='/staticFiles/main.css' />
+    <title>Home Page</title>
+        
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <a href="/">
+                <button class="btn btn-outline-primary" type="button">Accueil</button>
+            </a>
+            <a href="documentation">
+                <button class="btn btn-outline-success" type="button">Documentation</button>
+            </a>
+            <a href="aboutus">
+                <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+            </a>
+        </form>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">RemeetAI : Comment cela fonctionne ? </h1>
+        <p class="lead">Curieux d'en apprendre plus sur le fonctionnement de RemeetAI ? Pas de secret entre nous.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="aboutus" role="button" style="font-size: 14px;">En apprendre plus sur l'équipe derrière le projet.</a>
+        </p>
+        <hr class="my-4">
+        <p>Voici un schéma simplifié qui présente le processus de création du résumé final : </p>
+        <img src="{{image}}" alt="schema simple application RemeetAI" class="center-image">
+        <figcaption class="mt-5">Fig.1 - Schéma de création du résumé</figcaption>
+    </div>
+    <div class="container-fluid">
+        <div class="align-items-center justify-content-center text-center">
+            <h3>Pour en apprendre plus sur les algorithmes aidant au processus de création c'est dessous :</h3>
+            <div class="bottom-arrow"></div>
+        </div>
+       <hr>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">LSA</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <p>LSA est une technique de résumé de texte extractif qui utilise l'analyse sémantique latente (LSA) pour identifier les phrases les plus importantes d'un document. L'analyse sémantique latente est une méthode qui permet de trouver des modèles cachés et des relations entre les mots et les documents en utilisant la fréquence des termes et la décomposition en valeurs singulières (SVD). L'algorithme du résumeur LSA se compose de trois étapes principales :
+                    <ul>
+                        <li>Création de la matrice d'entrée : Le document d'entrée est représenté sous la forme d'une matrice afin de le comprendre et d'effectuer des calculs. Ainsi, une matrice des termes du document est générée. Les cellules sont utilisées pour représenter l'importance des mots dans les phrases.</li>
+                        <li>Réduction de la dimensionnalité : La matrice des termes du document est réduite à un espace de moindre dimension à l'aide de la SVD, qui préserve les informations les plus importantes tout en supprimant le bruit et la redondance. Il en résulte une nouvelle matrice qui capture la structure sémantique latente du document.</li>
+                        <li>Classement et sélection des phrases : Les phrases sont classées en fonction de leur similarité avec la matrice réduite, qui reflète leur pertinence par rapport aux principaux thèmes du document. Les phrases les mieux classées sont sélectionnées pour former le résumé.</li>
+                    </ul>
+                </p>
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">TextRank</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <p>TextRank est une autre technique de résumé de texte extractif qui utilise un algorithme de classement basé sur un graphe pour classer les phrases en fonction de leur importance et de leur pertinence. TextRank s'inspire de PageRank, qui est utilisé pour classer les pages web en fonction de leur popularité. L'algorithme de TextRank se compose de quatre étapes principales :
+                    <ul>
+                        <li>Prétraitement du texte : Le document d'entrée est divisé en phrases et en mots, et les mots vides sont supprimés. Les mots sont normalisés à l'aide du stemming ou de la lemmatisation.</li>
+                        <li>Construction d'un graphe : Un graphe est construit où chaque nœud représente une phrase et chaque arête représente la similarité entre deux phrases. La similarité peut être calculée à l'aide de différentes mesures, telles que la similarité en cosinus ou la similarité de Jaccard.</li>
+                        <li>Classement des graphes : Un algorithme itératif est appliqué pour attribuer un score à chaque nœud en fonction de ses connexions avec d'autres nœuds. Les nœuds ayant un score plus élevé sont plus importants et plus pertinents pour le document.</li>
+                        <li>Extraction du résumé : Les phrases sont triées en fonction de leur score et les phrases les mieux classées sont sélectionnées pour former le résumé.</li>
+                    </ul>
+                </p>
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">LexRank</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <p>L'algorithme LexRank est une approche non supervisée basée sur les graphes pour le résumé automatique de textes. Il calcule l'importance des phrases en se basant sur le concept de centralité des vecteurs propres dans une représentation graphique des phrases. Dans l'algorithme LexRank, une phrase similaire à de nombreuses autres phrases du texte a une forte probabilité d'être importante. L'approche consiste à dire qu'une phrase particulière est recommandée par d'autres phrases similaires et qu'elle est donc mieux classée. La centralité du vecteur propre est une mesure de l'influence d'un nœud sur un réseau. Si un nœud est pointé par de nombreux nœuds (qui ont également une centralité de vecteur propre élevée), ce nœud aura une centralité de vecteur propre élevée. La centralité du vecteur propre est l'unique mesure satisfaisant certains axiomes naturels pour un système de classement. Dans le contexte de l'algorithme LexRank, il calcule l'importance des phrases en se basant sur le concept de centralité du vecteur propre dans une représentation graphique des phrases L'algorithme est basé sur quatre étapes principales :
+                    <ul>
+                        <li>Créer une matrice document-terme : La première étape consiste à créer une matrice document-terme où chaque ligne représente une phrase et chaque colonne un terme. La valeur de chaque cellule est la fréquence du terme dans la phrase correspondante.</li>
+                        <li>Calculer la similarité entre les phrases : La similarité entre les phrases est calculée à l'aide de la similarité cosinus. Le score de similarité entre deux phrases est le cosinus de l'angle entre leurs vecteurs correspondants dans la matrice document-terme.</li>
+                        <li>Créer une matrice de similarité des phrases : Une matrice de similarité des phrases est créée, où chaque cellule représente le score de similarité entre deux phrases.</li>
+                        <li>Appliquer l'algorithme PageRank à la matrice de similarité des phrases : Enfin, l'algorithme PageRank est appliqué à la matrice de similarité des phrases afin d'obtenir un score pour chaque phrase. Les phrases ayant les scores les plus élevés sont sélectionnées comme phrases de résumé..</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">Bart</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <p>BART est un modèle de transformateur codeur-encodeur (seq2seq) avec un codeur bidirectionnel (de type BERT) et un décodeur autorégressif (de type GPT). Le BART est pré-entraîné en corrompant le texte avec une fonction de bruit arbitraire, et en apprenant un modèle pour reconstruire le texte original.
+                Le modèle BART est particulièrement efficace lorsqu'il est "fine-tuned" pour la génération de texte (par exemple, résumé, traduction), mais il fonctionne également bien pour les tâches de compréhension (par exemple, classification de texte, réponse à des questions). Ce point de contrôle particulier a été affiné sur CNN Daily Mail, une vaste collection de paires texte-résumé.
+                </p>
+                <p>
+                    Envie d'en apprendre plus sur le modèle BART ? L'article de recherche se trouve <a href="https://arxiv.org/abs/1910.13461">ici.</a>
+                </p>
+            </div>
+           
+        </div>
+    </div>
+    <hr class="special-hr">
+    <div class="center-div mb-1">
+        <div class="row">
+            <div class="col text-left">
+                <a href="/">
+                    <button class="btn btn-outline-primary" type="button">Accueil</button>
+                </a>
+            </div>
+            <div class="col text-center">
+                <a href="documentation">
+                    <button class="btn btn-outline-success" type="button">Documentation</button>
+                </a>
+            </div>
+            <div class="col text-right">
+                <a href="aboutus">
+                    <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
