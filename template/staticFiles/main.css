@@ -1,35 +1,9 @@
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.blue-border .form-control:focus {
+    border: 1px solid #5789e6;
+    box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
 }
 
-.left {
-    float: left;
-    width: 50%;
-    background-color: #ccc;
-  }
-  
-.right {
-    float: left;
-    width: 50%;
-    background-color: #bbb;
-    }
-
-p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.green-border-focus .form-control:focus {
+    border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
 }
-
-h1 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 2rem;
-  }
-
-input {
-    display: block;
-    margin-bottom: 10px;
-    }

@@ -1,0 +1,1 @@
+C'est-à-dire on a une contrainte légale, on doit garder les données pendant 5 ans. C'est très peu fréquent. On va les voir dans les slides suivants et on va comprendre à quel besoin ils répondent ces classes. En gros, enfin si je résume, sur S3 il y a 6 classes.
