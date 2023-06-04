@@ -7,3 +7,46 @@
     border: 1px solid #8bc34a;
     box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
 }
+
+body {
+    background-color: #f2f2f200;
+}
+
+.jumbotron {
+    background-color: #f2f2f200;
+}
+
+.bottom-arrow {
+    width: 50%;
+    margin: auto;
+
+    border-bottom: 5px solid #01406a;
+}
+
+.bottom-arrow:after {
+    content:'';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-top: 25px solid #01406a;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.special-hr {
+    border-top: 5px solid #01406a;
+}
+
+.left {
+    border-right: 1px solid #01406a;
+    border-top: 1px solid #01406a;
+    border-bottom: 1px solid #01406a;
+}
+
+.right {
+    border-top: 1px solid #01406a;
+    border-bottom: 1px solid #01406a;
+}
