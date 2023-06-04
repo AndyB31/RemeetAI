@@ -1,48 +1,115 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href='/staticFiles/main.css' />
     <title>Home Page</title>
+    <script>
+        function myFunction(value) {
+            if (value === "extract") {
+                document.getElementById("dropdown sentences").style.display="block";
+                document.getElementById("submit1").value = "extract";
+                document.getElementById("submit1").innerHTML = "Extraction de sentences";
+            } else if (value === "paraphrase") {
+                document.getElementById("dropdown sentences").style.display="none"
+                document.getElementById("submit1").value = "paraphrase";
+                document.getElementById("submit1").innerHTML = "Paraphraser";
+            }
+        };
+        function changeText(item) {
+            if (item==undefined) {
+                document.getElementById("dropdownMenuButton1").innerHTML = "LSA";
+                document.getElementById("dropdownMenuButton1").value = "LSA";
+            }
+            else {
+                document.getElementById("dropdownMenuButton1").innerHTML = item;
+                document.getElementById("dropdownMenuButton1").value = item;
+            }
+        }
+    </script>
+    
 </head>
 <body>
-    <h1>RemeetAI : ton outil de résumé intelligent</h1>
-    <p>Grâce à l'outil RemeetAI tu peux obtenir en quelques secondes ou minutes (selon la taille de ton fichier et la méthode sélectionnée) un résumé directement à partir d'une vidéo ou d'un audio.</p>
-    <p>Tu as manqué une réunion ? Tu manques de temps pour réaliser le compte-rendu de ton point quotidien ? RemeetAI est là pour ça.</p>
-    <p>Warning : A ce stade de développement, l'outil ne peut pas remplacer la qualité d'un résumé produit par un être humain, il est là en support/soutien.</p>
-    <div class="center">
-        <div class="left">
-            <form action="{{ url_for('home') }}" method="POST">
-                <h2>Renseignez votre texte de référence : </h2>
-                <textarea name="message" rows="8" cols="125">
-                Copiez votre texte de référence ici.
-                </textarea>
-    
-                <h2>Ou obtenez votre résumé à partir d'un format vidéo/audio : </h2>
-                <input type="file" name="audio_file">
-    
-                <h2>Choisissez votre méthode de résumé et validez !</h2>
-                <select name="method">
-                    {% for item in items %}
-                        <option value="{{ item }}">{{ item }}</option>
-                    {% endfor %}
-                </select>
-    
-                <hr>
-                <input type="submit" value="Obtenir mon résumé automatique">
-            </form>
-        </div>
-        <div class="right">
-
-            <textarea name="message" id="myTextArea" rows="16" cols="125">
-                Le résultat va s'afficher ici...!
-            </textarea>
-            <script>
-                var summarize_text = summarize_text
-                document.getElementById("myTextArea").value = summarize_text;
-            </script>
-        </div>
-       
-       
+    <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <button class="btn btn-outline-primary" type="button">Accueil</button>
+            <button class="btn btn-outline-success" type="button">Documentation</button>
+            <button class="btn btn-outline-secondary" type="button">Qui sommes-nous ?</button>
+        </form>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">RemeetAI : ton outil de résumé intelligent</h1>
+        <p class="lead">Grâce à l'outil RemeetAI tu peux obtenir en quelques secondes ou minutes (selon la taille de ton fichier et la méthode sélectionnée) un résumé directement à partir d'une vidéo ou d'un audio.</p>
+        <p class="lead">Tu as manqué une réunion ? Tu manques de temps pour réaliser le compte-rendu de ton point quotidien ? RemeetAI est là pour ça.</p>
+        <hr class="my-4">
+        <p>Avertissement : A partir de nos recherches et de l'état de l'art sur la thématique, l'outil ne peut pas remplacer la qualité d'un résumé produit par un être humain, il est là en support/soutien.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="#" role="button" style="font-size: 14px;">En apprendre plus sur le logiciel RemeetAI</a>
+        </p>
     </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label onclick="myFunction('extract')" class="btn btn-primary active">
+                      <input  type="radio" name="options" id="option1" complete="off" checked value="extract"> Extraction de sentences
+                    </label>
+                    <label onclick="myFunction('paraphrase')" class="btn btn-primary">
+                      <input  type="radio" name="options" id="option2" autocomplete="off" value="paraphrase"> Génération de paragraphes
+                    </label>
+                </div>
+                <div class="dropdown mt-2" id="dropdown sentences">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ items[0] }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        {% for item in items %}
+                        <a class="dropdown-item" onclick="changeText('{{ item }}')" value="{{ item }}" href="#">{{ item }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="form-group col-md-4">
+                    <label for="textlength">Longueur du texte</label>
+                    <select id="textlength" class="form-control">
+                      <option selected>Très court</option>
+                      <option>Court</option>
+                      <option>Moyen</option>
+                      <option>Long</option>
+                    </select>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group shadow-textarea blue-border-focus">
+                    <label for="FormControlTextarea1">Renseignez votre texte de référence : </label>
+                    <textarea class="form-control z-depth-1 rounded" id="FormControlTextarea1" rows="15" placeholder="Write/copy your text here"></textarea>
+                </div>
+                <hr>
+                <button type="submit" id="submit1" class="btn btn-primary" value="Extraction de sentences">Extraction de sentences</button>
+            </div>
+            <div class="col-sm">
+                <div class="form-group shadow-textarea green-border-focus">
+                    <label for="FormControlTextarea2">Votre résumé s'affiche ci-dessous : </label>
+                    <textarea class="form-control z-depth-2 rounded" id="FormControlTextarea2" rows="15" placeholder="Your resume will appear here"></textarea>
+                </div>
+                <!--script>
+                    var summarize_text = summarize_text
+                    document.getElementById("myTextArea").value = summarize_text;
+                </script-->
+            </div>
+       
+       
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
