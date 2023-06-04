@@ -29,6 +29,23 @@
                 document.getElementById("dropdownMenuButton1").value = item;
             }
         }
+        async function submit(event) {
+            event.preventDefault();
+            const form = event.currentTarget;
+            const tool = document.querySelector("#dropdown-tool").value
+            const file = document.querySelector("#inputGroupFile01")
+            const url = `http://localhost:5000/summarize/${tool}`
+            const fetchOptions = {
+                method: "POST",
+            };
+            const formData = new FormData()
+            let imageBlob = await new Promise(resolve => file.toBlob(resolve, file.DOCUMENT_TYPE_NODE));
+
+            formData.append("file", imageBlob, file.filename)
+
+            fetch(url, fetchOptions)
+
+        }
     </script>
     
 </head>
@@ -100,7 +117,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         {% for item in items %}
-                        <a class="dropdown-item" onclick="changeText('{{ item }}')" value="{{ item }}" href="#">{{ item }}</a>
+                        <a id="dropdown-tool" class="dropdown-item" onclick="changeText('{{ item }}')" value="{{ item }}" href="#">{{ item }}</a>
                         {% endfor %}
                     </div>
                 </div>
