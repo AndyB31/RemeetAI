@@ -1,0 +1,9 @@
+Alors je suis sûr que vous avez tous vu passer les magnifiques images qui ont été révélées mi-juillet à l'issue des six premiers mois de fonctionnement du télescope.
+Vous avez sans doute que le spectre des ondes électromagnétiques est composé de différentes familles suivant la longueur d'onde.
+Ça va des rayons gamma aux ondes radios en passant par le visible, l'infrarouge ou encore les micro-ondes.
+Donc c'est une plage de longueurs d'ondes pas facile à observer avec un télescope basé au sol, d'où l'intérêt d'aller dans l'espace.
+Mais en contrepartie on sait que la tâche centrale sera moins étalée donc c'était un choix assumé dans le design du télescope.
+C'est un instrument qui sert juste au satellite à repérer les étoiles environnantes pour pouvoir se positionner précisément.
+Et avec ça, acquérir une image va quand même prendre plusieurs heures donc le télescope doit bien sûr se maintenir dans la bonne orientation pour compenser sa trajectoire.
+Et là aussi c'était prévu, il avait été calculé que le miroir devait s'en prendre en moyenne une par mois.
+Merci d'avoir suivi la vidéo si ça vous intéresse je mettrai le lien de l'article scientifique qui est assez lisible.

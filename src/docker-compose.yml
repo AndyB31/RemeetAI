@@ -1,0 +1,159 @@
+version: '3.8'
+services:
+  tp-zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.2
+    hostname: zookeeper
+    container_name: tp-zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - ./zoo/data:/var/lib/zookeeper/data
+      - ./zoo/log:/var/lib/zookeeper/log
+
+  kafka1:
+    image: confluentinc/cp-kafka:7.3.2
+    hostname: kafka1
+    container_name: kafka1
+    ports:
+      - "8097:8097"
+    depends_on:
+      - tp-zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:8097,PLAINTEXT_INTERNAL://kafka1:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+
+  # kafka2:
+  #   image: confluentinc/cp-kafka:7.3.2
+  #   hostname: kafka2
+  #   container_name: kafka2
+  #   ports:
+  #     - "8098:8098"
+  #   depends_on:
+  #     - tp-zookeeper
+  #   environment:
+  #     KAFKA_BROKER_ID: 2
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:8098,PLAINTEXT_INTERNAL://kafka2:9092
+  #     KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #     KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+  #     KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  # kafka3:
+  #   image: confluentinc/cp-kafka:7.3.2
+  #   hostname: kafka3
+  #   container_name: kafka3
+  #   ports:
+  #     - "8099:8099"
+  #   depends_on:
+  #     - tp-zookeeper
+  #   environment:
+  #     KAFKA_BROKER_ID: 3
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:8099,PLAINTEXT_INTERNAL://kafka3:9092
+  #     KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #     KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+  #     KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  tp-postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      POSTGRES_USER: TP3
+      POSTGRES_PASSWORD: TP3mdp
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+  # producer:
+  #   container_name: producer
+  #   image: ./producer/
+  #   environment:
+  #     DB_HOST: tp-postgres
+  #     DB_PORT: 5432
+  #     DB_USER: TP3
+  #     DB_PASSWORD: TP3mdp
+  #     DB_NAME: TP+3
+  #   networks:
+  #     - postgres
+
+  # consumer:
+  #   container_name: consumer
+  #   image: ./consumer/
+  #   environment:
+  #     DB_HOST: tp-postgres
+  #     DB_PORT: 5432
+  #     DB_USER: TP3
+  #     DB_PASSWORD: TP3mdp
+  #     DB_NAME: TP+3
+  #   networks:
+  #     - postgres
+
+  web:
+    build:
+      context: server
+    restart: always
+    # secrets:
+    #   - db-password
+    environment:
+      KAFKA_HOST: kafka1:8097
+    ports:
+      - 8000:8000
+    networks:
+      - backnet
+      - frontnet
+    depends_on:
+      - tp-postgres
+  
+  proxy:
+    build: proxy
+    restart: always
+    ports:
+      - 80:80
+    depends_on: 
+      - web
+    networks:
+      - frontnet
+
+networks:
+  postgres:
+    driver: bridge
+  backnet:
+  frontnet:
+
+volumes:
+    postgres:
+    pgadmin:
