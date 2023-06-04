@@ -1,3 +1,5 @@
+from ..utils import debug
+
 
 def combine_words(splitted_input, input, length):
     combined_inputs = []
@@ -38,7 +40,7 @@ def remove_duplicates(input: str) -> str:
       splitted_input = remove_duplicates_step(splitted_input, word_length) #look whether two sequences of length n (with distance n apart) are equal. If so, remove the n overlapping sequences
       splitted_input, word_length = combine_words(splitted_input, splitted_input, word_length) #make even bigger sequences
       if intermediate_output:
-          print(splitted_input)
-          print(word_length)
+          debug.print_debug(splitted_input)
+          debug.print_debug(word_length)
   output = splitted_input[0] #In the end you have a list of length 1, with all possible lengths of repetitive words removed
   return output
