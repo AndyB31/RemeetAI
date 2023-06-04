@@ -1,3 +1,18 @@
+/* GENERAL.HTML */
+
+body {
+    background-color: #f2f2f200;
+}
+
+.jumbotron {
+    background-color: #f2f2f200;
+}
+
+.special-hr {
+    border-top: 5px solid #01406a;
+}
+/* HOME.HTML */
+
 .blue-border .form-control:focus {
     border: 1px solid #5789e6;
     box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
@@ -6,14 +21,6 @@
 .green-border-focus .form-control:focus {
     border: 1px solid #8bc34a;
     box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
-}
-
-body {
-    background-color: #f2f2f200;
-}
-
-.jumbotron {
-    background-color: #f2f2f200;
 }
 
 .bottom-arrow {
@@ -36,10 +43,6 @@ body {
     border-right: 50px solid transparent;
 }
 
-.special-hr {
-    border-top: 5px solid #01406a;
-}
-
 .left {
     border-right: 1px solid #01406a;
     border-top: 1px solid #01406a;
@@ -49,4 +52,23 @@ body {
 .right {
     border-top: 1px solid #01406a;
     border-bottom: 1px solid #01406a;
+}
+
+/* DOCUMENTATION.HTML */
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: auto;
+}
+
+figcaption {
+    text-align: center;
+}
+
+.center-div {
+    margin: 0 auto;
+    width: 70%;
 }

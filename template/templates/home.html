@@ -35,9 +35,16 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
-            <button class="btn btn-outline-primary" type="button">Accueil</button>
-            <button class="btn btn-outline-success" type="button">Documentation</button>
-            <button class="btn btn-outline-secondary" type="button">Qui sommes-nous ?</button>
+            <a href="#">
+                <button class="btn btn-outline-primary" type="button">Accueil</button>
+            </a>
+            <a href="documentation">
+                <button class="btn btn-outline-success" type="button">Documentation</button>
+            </a>
+            <a href="aboutus">
+                <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+            </a>
+
         </form>
     </nav>
     <div class="jumbotron">
@@ -47,7 +54,10 @@
         <hr class="my-4">
         <p>Avertissement : A partir de nos recherches et de l'état de l'art sur la thématique, l'outil ne peut pas remplacer la qualité d'un résumé produit par un être humain, il est là en support/soutien.</p>
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="#" role="button" style="font-size: 14px;">En apprendre plus sur le logiciel RemeetAI</a>
+          <a class="btn btn-primary btn-lg" href="documentation" role="button" style="font-size: 14px;">En apprendre plus sur le logiciel RemeetAI</a>
+        </p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="aboutus" role="button" style="font-size: 14px;">En apprendre plus sur l'équipe derrière le projet.</a>
         </p>
     </div>
     <div class="container-fluid">
@@ -134,6 +144,26 @@
         </div>
         <hr>
         <button type="submit" id="submit1" class="btn btn-primary mb-5" value="Extraction de sentences">Extraction de sentences</button>
+    </div>
+    <hr class="special-hr">
+    <div class="center-div mb-1">
+        <div class="row">
+            <div class="col text-left">
+                <a href="/">
+                    <button class="btn btn-outline-primary" type="button">Accueil</button>
+                </a>
+            </div>
+            <div class="col text-center">
+                <a href="documentation">
+                    <button class="btn btn-outline-success" type="button">Documentation</button>
+                </a>
+            </div>
+            <div class="col text-right">
+                <a href="aboutus">
+                    <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+                </a>
+            </div>
+        </div>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
