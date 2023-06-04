@@ -32,9 +32,14 @@
             </form>
         </div>
         <div class="right">
-            <textarea name="message" rows="16" cols="125">
+
+            <textarea name="message" id="myTextArea" rows="16" cols="125">
                 Le résultat va s'afficher ici...!
             </textarea>
+            <script>
+                var summarize_text = summarize_text
+                document.getElementById("myTextArea").value = summarize_text;
+            </script>
         </div>
        
        
