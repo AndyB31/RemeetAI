@@ -72,3 +72,31 @@ figcaption {
     margin: 0 auto;
     width: 70%;
 }
+
+/* ABOUTUS.HTML */
+
+.box1 {
+    position: relative;
+}
+
+.box1 img {
+    display: block;
+    margin: 0 auto;
+}
+
+.box1 figcaption {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.25rem;
+}
+
+.aboutus {
+    font-size: 1.50rem;
+    font-weight: 350;
+}
+
+.jumbotron {
+    padding: 1rem;
+}

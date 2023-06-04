@@ -12,7 +12,9 @@ def home():
 
 @app.route('/aboutus')
 def aboutus():
-    return render_template('aboutus.html')
+    fileandy = os.path.join(img, 'andy.jpg')
+    filelorenzo = os.path.join(img, 'lorenzo.jpg')
+    return render_template('aboutus.html', imageandy=fileandy, imagelorenzo=filelorenzo)
 
 
 @app.route('/documentation')
