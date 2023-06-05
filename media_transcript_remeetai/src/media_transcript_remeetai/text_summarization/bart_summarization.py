@@ -36,7 +36,7 @@ def bart_sum(filename: str = None, text_base: str = None, max_length: int = 1000
     short_text_truncated = short_text_truncated[3:-4]
 
     #for prototype use this one 
-    summarize_high_beams = summarizer(short_text_truncated, do_sample=False, num_beams=7, num_return_sequences=1)
+    summarize_high_beams = summarizer(short_text_truncated, max_length=max_length, min_length=max_length//4, do_sample=False, num_beams=7, num_return_sequences=1)
     debug.print_debug(summarize_high_beams)
     # summarize_low_beams = summarizer(short_text_truncated, do_sample=False, num_beams=3, num_return_sequences=2)
     # debug.print_debug(summarize_low_beams)

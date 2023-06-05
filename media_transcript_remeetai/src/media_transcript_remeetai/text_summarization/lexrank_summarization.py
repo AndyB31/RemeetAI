@@ -7,7 +7,7 @@ from lexrank import STOPWORDS, LexRank
 # Setting path to the text file
 # file_name = ("./AWS - 1 (trimmed)2.txt")
 
-def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None):
+def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None, sentences_number: int = 5):
     if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     
@@ -29,8 +29,8 @@ def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None
     num_sentences = len(sentences)
     # Calculating the average sentence length in words
     average_length = num_words / num_sentences
-    debug.print_debug(average_length)
-    user_summary_size_sentence = 9 #user input parameter
+    #debug.print_debug(average_length)
+    user_summary_size_sentence = sentences_number #user input parameter
     # Setting the desired summary size in words
     summary_size_words = average_length * user_summary_size_sentence 
     # Estimating the summary size in sentences
