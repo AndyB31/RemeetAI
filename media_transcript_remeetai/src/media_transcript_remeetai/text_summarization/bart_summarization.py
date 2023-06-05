@@ -15,7 +15,7 @@ import re
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
 tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
 
-def bart_sum(filename: str = None, text_base: str = None):
+def bart_sum(filename: str = None, text_base: str = None, max_length: int = 1000):
     if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     
@@ -31,14 +31,14 @@ def bart_sum(filename: str = None, text_base: str = None):
     # Print the variable
     debug.print_debug(text)
 
-    token_ids = tokenizer.encode_plus(text, max_length=1000, truncation=True)
+    token_ids = tokenizer.encode_plus(text, max_length=max_length, truncation=True)
     short_text_truncated = tokenizer.decode(token_ids["input_ids"]) # decode
     short_text_truncated = short_text_truncated[3:-4]
 
     #for prototype use this one 
     summarize_high_beams = summarizer(short_text_truncated, do_sample=False, num_beams=7, num_return_sequences=1)
     debug.print_debug(summarize_high_beams)
-    summarize_low_beams = summarizer(short_text_truncated, do_sample=False, num_beams=3, num_return_sequences=2)
-    debug.print_debug(summarize_low_beams)
+    # summarize_low_beams = summarizer(short_text_truncated, do_sample=False, num_beams=3, num_return_sequences=2)
+    # debug.print_debug(summarize_low_beams)
 
     return summarize_high_beams

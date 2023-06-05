@@ -11,6 +11,7 @@
         let tool = "LSA";
         let id = "";
         let loading = false;
+        let gen = false
         function myFunction(value) {
             if (value === "extract") {
                 document.getElementById("dropdown sentences").style.display="block";
@@ -33,12 +34,16 @@
             }
 
         }
+        window.onload = function() {
+            changeText(undefined);
+        }
         async function submit() {
             // event.preventDefault();
-            const form = event.currentTarget;
+            // const form = event.currentTarget;
             const tool = document.querySelector("#dropdownMenuButton1").value
             const file = document.querySelector("#inputGroupFile01")
             const form_img = document.querySelector("#form-img")
+            const length = document.querySelector("#textlength").value
             const url = `http://localhost:5000/summarize/${tool}`
             const formData = new FormData(form_img)
             const fetchOptions = {
@@ -46,7 +51,6 @@
                 body: formData,
             };
             // let imageBlob = await new Promise(resolve => file.toBlob(resolve, file.DOCUMENT_TYPE_NODE));
-
             // formData.append("file", imageBlob, file.filename)
 
             fetch(url, fetchOptions).then((response) => {
@@ -168,10 +172,10 @@
                 <div class="form-group col-md-4">
                     <label for="textlength">Longueur du texte</label>
                     <select id="textlength" class="form-control">
-                      <option selected>Très court</option>
-                      <option>Court</option>
-                      <option>Moyen</option>
-                      <option>Long</option>
+                      <option selected value="0">Très court</option>
+                      <option value="1">Court</option>
+                      <option value="2">Moyen</option>
+                      <option value="3">Long</option>
                     </select>
                   </div>
             </div>

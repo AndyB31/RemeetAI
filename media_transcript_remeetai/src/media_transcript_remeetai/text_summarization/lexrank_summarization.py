@@ -16,36 +16,25 @@ def lexrank_sum(filename: str = None, text_base: str = None, outpath: str = None
           text = fp.read()
     else:
        text = text_base
-       
 
     # Creating a LexRank instance
     lxr = LexRank([text], stopwords=STOPWORDS['fr'])
-
     # Splitting the text by space
     words = text.split()
-
     # Computing the number of words
     num_words = len(words)
-
     # Splitting the text by "."
     sentences = text.split(".")
-
     # Computing the number of sentences
     num_sentences = len(sentences)
-
     # Calculating the average sentence length in words
     average_length = num_words / num_sentences
-
     debug.print_debug(average_length)
-
     user_summary_size_sentence = 9 #user input parameter
-
     # Setting the desired summary size in words
     summary_size_words = average_length * user_summary_size_sentence 
-
     # Estimating the summary size in sentences
     summary_size_sentences = int(summary_size_words / average_length)
-
     # Summarizing the text with summary_size_sentences total
     summary = lxr.get_summary(sentences, summary_size=summary_size_sentences)
 

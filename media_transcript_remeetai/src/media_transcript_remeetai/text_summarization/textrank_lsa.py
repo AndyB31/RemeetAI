@@ -22,7 +22,7 @@ nltk.download("punkt")
 # Setting path to the text file
 file_name = ("./AWS - 1 (trimmed)2.txt")
 
-def textrank_lsa_sum(filename: str = None, text_base: str = None):
+def lsa_sum(filename: str = None, text_base: str = None, outpath: str = None):
     if not filename and not text:
         raise Exception("filename or text must be specified.")
     if filename:
@@ -42,12 +42,23 @@ def textrank_lsa_sum(filename: str = None, text_base: str = None):
     debug.print_debug("Summary by LsaSummarizer:")
     debug.print_debug(text_summary_lsa)
 
-    # Opening the summary file in write mode
-    with open('summary_lsa.txt', mode='w', encoding='utf-8') as fp:
-        # Write each string in the list to a separate line
-        for sentence in summary_lsa:
-            fp.write(str(sentence) + "\n")
+    if outpath:
+        # Opening the summary file in write mode
+        with open(outpath, mode='w', encoding='utf-8') as fp:
+            # Write each string in the list to a separate line
+            for sentence in summary_lsa:
+                fp.write(str(sentence) + "\n")
+    return summary_lsa
 
+def textrank_sum(filename: str = None, text_base: str = None, outpath: str = None):
+    if not filename and not text:
+        raise Exception("filename or text must be specified.")
+    if filename:
+        # Loading the text file as a list of sentences
+        with open(filename, mode='rt', encoding='utf-8') as fp:
+            text = fp.read()
+    else:
+        text = text_base
     # Use TextRank from pytextrank library
     nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("textrank", last=True)
@@ -59,10 +70,11 @@ def textrank_lsa_sum(filename: str = None, text_base: str = None):
         debug.print_debug(sentence)
     sentenced_summary_textrank.append(str(sentence))
 
-    # Open a new file in write mode
-    with open("summary_txt_rank.txt", "w") as file:
-        # Write each string in the list to a separate line
-        for sentence in sentenced_summary_textrank:
-            file.write(sentence + "\n")
+    if outpath:
+        # Open a new file in write mode
+        with open(outpath, "w") as file:
+            # Write each string in the list to a separate line
+            for sentence in sentenced_summary_textrank:
+                file.write(sentence + "\n")
 
     return '\n'.join(sentenced_summary_textrank)

@@ -23,10 +23,12 @@ def run_subprocess(tool, filename, uid, data):
     transcript, _, _, _ = process_media.trancript(filename)
     if tool == "bart":
       report = bart_summarization.bart_sum(text_base = transcript)
-    elif tool == "lexrank":
+    elif tool == "LexRank":
       report = lexrank_summarization.lexrank_sum(text_base = transcript)
-    elif tool == "textrank_lsa":
-      report = textrank_lsa.textrank_lsa_sum(text_base = transcript)
+    elif tool == "LSA":
+      report = textrank_lsa.lsa_sum(text_base = transcript)
+    elif tool == "TextRank":
+      report = textrank_lsa.textrank_sum(text_base = transcript)
 
     # thread[uid]["report"] = report
     # thread[uid]["is_done"] = True
