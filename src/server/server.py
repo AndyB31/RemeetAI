@@ -4,12 +4,14 @@ from flask import Flask, request, abort
 from media_transcript_remeetai import process_media, text_summarization
 
 from media_transcript_remeetai.text_summarization import bart_summarization, lexrank_summarization, textrank_lsa
+from flask_cors import CORS
 
 # threaded.ThreadPooled.configure(max_workers=3)
 
 process_registry = {}
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def hello_world():

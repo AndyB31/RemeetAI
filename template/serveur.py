@@ -1,7 +1,10 @@
 from flask import Flask, request, render_template
 import os
+from flask_cors import CORS
 
 app = Flask(__name__, template_folder='templates', static_folder='staticFiles', )
+CORS(app)
+
 img = os.path.join('staticFiles', 'Image')
 
 @app.route('/')
@@ -23,6 +26,6 @@ def documentation():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=4000)
     
     
