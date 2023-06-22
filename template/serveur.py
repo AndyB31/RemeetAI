@@ -11,7 +11,9 @@ img = os.path.join('staticFiles', 'Image')
 def home():
     items = ["LSA","LexRank", "TextRank"]
     summarize_text = "Le résultat va s'afficher ici...!"
-    return render_template('home.html', items=items, summarize_text = summarize_text)
+    img_bg = os.path.join(img, 'home_bg.png')
+    arrowdown = os.path.join(img, 'down.png')
+    return render_template('home.html', items=items, summarize_text = summarize_text, img_bg=img_bg, arrowdown=arrowdown)
 
 @app.route('/aboutus')
 def aboutus():
@@ -23,7 +25,7 @@ def aboutus():
 @app.route('/documentation')
 
 def documentation():
-    file = os.path.join(img, 'remeetai_simple_schema.png')
+    file = os.path.join(img, 'remeetai_simple_schema2.png')
     return render_template('documentation.html', image=file)
 
 

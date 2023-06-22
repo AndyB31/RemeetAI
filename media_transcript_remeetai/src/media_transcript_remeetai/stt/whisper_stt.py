@@ -20,8 +20,9 @@ def speech_to_text(audiofile: str):
 
   options = whisper.DecodingOptions()
   # text = model.transcribe(audiofile)
-  text = "fr"
-  text_en = model.transcribe(audiofile, language="en")
+  text = model.transcribe(audiofile, language="fr")
+  text_en = "en" 
+  #model.transcribe(audiofile, language="en")
 
   # print(result.text)
   return (result, text, text_en)

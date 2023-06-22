@@ -100,3 +100,75 @@ figcaption {
 .jumbotron {
     padding: 1rem;
 }
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #272EE3;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #A338FB;
+    color: white;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #24AAFF;
+    color: white;
+  }
+
+  .prezdiv {
+    height: 100%;
+    padding: 10%;
+    color: #fff;
+    text-align: center;
+  }
+
+  .prezdiv h1 {
+    font-size: 5.5rem;
+  }
+
+  .prezdiv h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .prezdiv .btn-primary {
+    background-color: #24AAFF;
+    border-color: #24AAFF;
+  }
+
+  .prezdiv img {
+    transform: rotate(180deg);
+    height: 20%;
+    margin-top: 100px;
+  } 
+
+  .tooldiv {
+    background-color: #fff;
+    padding: 5%;
+  }
+
+  .docdiv {
+    height: 100%;
+    padding: 5%;
+    color: #fff;
+    text-align: center;
+    background: rgb(250,89,70);
+    background: linear-gradient(313deg, rgba(250,89,70,1) 0%, rgba(227,39,177,1) 32%, rgba(163,56,251,1) 70%, rgba(58,44,227,1) 100%);
+  }

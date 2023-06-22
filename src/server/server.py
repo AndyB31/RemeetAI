@@ -5,10 +5,25 @@ from media_transcript_remeetai import process_media, text_summarization
 
 from media_transcript_remeetai.text_summarization import bart_summarization, lexrank_summarization, textrank_lsa
 from flask_cors import CORS
+import json
 
 # threaded.ThreadPooled.configure(max_workers=3)
 
 process_registry = {}
+
+L = 3
+M = 2
+S = 1
+X = 0
+
+sizes_chart = {
+  L: {"e": 20, "g": 1000},
+  M: {"e": 15, "g": 750},
+  S: {"e": 10, "g": 500},
+  X: {"e": 5, "g": 250},
+}
+
+
 
 app = Flask(__name__)
 CORS(app)
@@ -17,23 +32,29 @@ CORS(app)
 def hello_world():
   return "<p>Hello, World!</p>"
 
-def run_subprocess(tool, filename, uid, data):
+def run_subprocess(tool, filename, uid, data, size):
   # data = {}
   try:
-    transcript, _, _, _ = process_media.trancript(filename)
+    transcript, transcript, _, _ = process_media.trancript(filename)
+    print()
     if tool == "bart":
-      report = bart_summarization.bart_sum(text_base = transcript)
+      report = bart_summarization.bart_sum(text_base = transcript, max_length=size["g"])[0]["summary_text"]
     elif tool == "LexRank":
-      report = lexrank_summarization.lexrank_sum(text_base = transcript)
+      report = lexrank_summarization.lexrank_sum(text_base = transcript, sentences_number=size["e"])
     elif tool == "LSA":
-      report = textrank_lsa.lsa_sum(text_base = transcript)
+      report = textrank_lsa.lsa_sum(text_base = transcript, sentences_number=size["e"])
     elif tool == "TextRank":
-      report = textrank_lsa.textrank_sum(text_base = transcript)
+      report = textrank_lsa.textrank_sum(text_base = transcript, sentences_number=size["e"])
 
     # thread[uid]["report"] = report
     # thread[uid]["is_done"] = True
     # thread[uid]["error"] = False
+    # try:
+    #   report = json.dumps(report)
+    # except:
+      
     data["report"] = report
+    data["transcript"] = transcript
     data["is_done"] = True
     data["error"] = False
     print(f"{uid} => done")
@@ -49,13 +70,18 @@ def run_subprocess(tool, filename, uid, data):
 def summarize(tool = "bart"):
   if not request.files['file']:
     return {"message": "Need to upload a file"}, 400
+  
+  if request.form["size"]:
+    size = int(request.form["size"])
+  else:
+    size = 2
   f = request.files['file']
   f.save(f'../../res/data/{f.filename}')
   uid = uuid.uuid1()
   manager = Manager()
   thread = manager.dict()
   thread["is_done"] = False
-  process = Process(target=run_subprocess, args=(tool, f'../../res/data/{f.filename}', str(uid), thread))
+  process = Process(target=run_subprocess, args=(tool, f'../../res/data/{f.filename}', str(uid), thread, sizes_chart[size]))
   process.start()
   process_registry[str(uid)] = {"p": process, "data": thread} 
   return {"id": f"{uid}"}
@@ -74,7 +100,7 @@ def get_summary(uid):
   except Exception as e:
     return {"error": str(e)}, 404
   if th["is_done"] and not th["error"]:
-    return {"done": True, "report": th["report"]}
+    return {"done": True, "report": th["report"], "transcript": th["transcript"]}
   elif th["is_done"]:
     return {"error": f"internal error: {th['msg']}"}
   return {"done": False, "message": "still processing..."}

@@ -11,7 +11,13 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <div class="topnav">
+        <a href="/">Accueil</a>
+        <a class="active" href="#">Documentation</a>
+        <a href="#contact">Contact</a>
+        <a href="aboutus">Qui sommes-nous ?</a>
+    </div>
+    <!-- <nav class="navbar navbar-light bg-light">
         <form class="form-inline">
             <a href="/">
                 <button class="btn btn-outline-primary" type="button">Accueil</button>
@@ -23,16 +29,16 @@
                 <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
             </a>
         </form>
-    </nav>
-    <div class="jumbotron">
+    </nav> -->
+    <div class="jumbotron docdiv">
         <h1 class="display-4">RemeetAI : Comment cela fonctionne ? </h1>
         <p class="lead">Curieux d'en apprendre plus sur le fonctionnement de RemeetAI ? Pas de secret entre nous.</p>
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="aboutus" role="button" style="font-size: 14px;">En apprendre plus sur l'équipe derrière le projet.</a>
+          <a class="btn btn-primary btn-lg mb-4" href="aboutus" role="button" style="font-size: 14px;">En apprendre plus sur l'équipe derrière le projet.</a>
         </p>
-        <hr class="my-4">
-        <p>Voici un schéma simplifié qui présente le processus de création du résumé final : </p>
-        <img src="{{image}}" alt="schema simple application RemeetAI" class="center-image">
+        <!-- <hr class=""> -->
+        <p class="mb-5">Voici un schéma simplifié qui présente le processus de création du résumé final : </p>
+        <img src="{{image}}" alt="schema simple application RemeetAI" class="center-image" style="width: 80%">
         <figcaption class="mt-5">Fig.1 - Schéma de création du résumé</figcaption>
     </div>
     <div class="container-fluid">
@@ -94,8 +100,8 @@
            
         </div>
     </div>
-    <hr class="special-hr">
-    <div class="center-div mb-1">
+    <!-- <hr class="special-hr"> -->
+    <!-- <div class="center-div mb-1">
         <div class="row">
             <div class="col text-left">
                 <a href="/">
@@ -113,7 +119,7 @@
                 </a>
             </div>
         </div>
-    </div>
+    </div> -->
     
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

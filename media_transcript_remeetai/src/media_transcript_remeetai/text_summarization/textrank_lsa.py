@@ -23,7 +23,7 @@ nltk.download("punkt")
 file_name = ("./AWS - 1 (trimmed)2.txt")
 
 def lsa_sum(filename: str = None, text_base: str = None, outpath: str = None, sentences_number: int = 5):
-    if not filename and not text:
+    if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     if filename:
         # Loading the text file as a list of sentences
@@ -48,10 +48,10 @@ def lsa_sum(filename: str = None, text_base: str = None, outpath: str = None, se
             # Write each string in the list to a separate line
             for sentence in summary_lsa:
                 fp.write(str(sentence) + "\n")
-    return summary_lsa
+    return text_summary_lsa
 
 def textrank_sum(filename: str = None, text_base: str = None, outpath: str = None, sentences_number: int = 5):
-    if not filename and not text:
+    if not filename and not text_base:
         raise Exception("filename or text must be specified.")
     if filename:
         # Loading the text file as a list of sentences
@@ -63,7 +63,7 @@ def textrank_sum(filename: str = None, text_base: str = None, outpath: str = Non
     nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("textrank", last=True)
     doc = nlp(text)
-    summary_textrank = doc._.textrank.summary(limit_phrases=15, limit_sentences=sentences_number) # user input sentences number
+    summary_textrank = doc._.textrank.summary(limit_phrases=sentences_number*3, limit_sentences=sentences_number) # user input sentences number
     debug.print_debug("Summary by TextRank:")
     sentenced_summary_textrank = []
     for sentence in summary_textrank:
