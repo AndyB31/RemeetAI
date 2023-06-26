@@ -48,7 +48,7 @@
             console.log("submit started")
 
             document.querySelector('.popup-screen').style.display = 'block';
-            document.querySelector('.loading-text').innerHTML = 'Uploading...';
+            document.querySelector('#loading-text').innerHTML = 'Uploading...';
 
             const file = document.querySelector("#inputGroupFile01")
             const form_img = document.querySelector("#form-img")
@@ -91,7 +91,7 @@
         }
         let dot = 0
         async function check_done() {
-            document.querySelector('.loading-text').innerHTML = 'Processing...';
+            document.querySelector('#loading-text').innerHTML = 'Processing...';
             console.log("check")
             const fetchOptions = {
                 method: "GET"
