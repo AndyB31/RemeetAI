@@ -157,7 +157,7 @@
     <div style=" overflow-y: scroll; height: 100%;">
         <div class="topnav">
             <a class="active" href="#">Accueil</a>
-            <a href="documentation">Documentation</a>
+            <a href="documentation">Mode d'Emploi</a>
             <a href="#contact">Contact</a>
             <a href="aboutus">Qui sommes-nous ?</a>
         </div>
@@ -224,7 +224,7 @@
                 <div class="col-sm">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label onclick="myFunction('extract')" class="btn btn-primary active">
-                        <input  type="radio" name="options" id="option1" complete="off" checked value="extract"> Extraction de sentences
+                        <input  type="radio" name="options" id="option1" complete="off" checked value="extract"> Extraction de sentences clés
                         </label>
                         <label onclick="myFunction('synthese')" class="btn btn-primary">
                         <input  type="radio" name="options" id="option2" autocomplete="off" value="synthese"> Génération de synthèses
@@ -242,8 +242,8 @@
                     </div>
                 </div>
                 <div class="col-sm">
-                    <div class="form-group col-md-4">
-                        <label for="textlength">Longueur du texte</label>
+                    <div class="form-group col-md-4 paramlong">
+                        <label for="textlength">Longueur de résumé attendu</label>
                         <select id="textlength" class="form-control">
                         <option selected value="0">Très court</option>
                         <option value="1">Court</option>
