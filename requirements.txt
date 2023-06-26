@@ -16,3 +16,4 @@ sentencepiece
 openai
 lexrank
 Flask
+deep_translator
