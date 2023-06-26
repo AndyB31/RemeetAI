@@ -9,6 +9,7 @@ Original file is located at
 
 from transformers import pipeline, set_seed
 from transformers import AutoTokenizer
+from deep_translator import GoogleTranslator,single_detection
 import re
 
 summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
