@@ -18,11 +18,13 @@
                 document.getElementById("dropdown sentences").style.display="block";
                 document.getElementById("submit1").value = "extract";
                 document.getElementById("submit1").innerHTML = "Extraction de sentences";
+                document.getElementById("labelresume").innerHTML = "Quantité de sentences clés extraites attendu"
             } else if (value === "synthese") {
                 gen = true;
                 document.getElementById("dropdown sentences").style.display="none"
                 document.getElementById("submit1").value = "synthese";
                 document.getElementById("submit1").innerHTML = "Génération de synthèses";
+                document.getElementById("labelresume").innerHTML = "Longueur de résumé attendu"
             }
         };
         function changeText(item) {
@@ -243,7 +245,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="form-group col-md-4 paramlong">
-                        <label for="textlength">Longueur de résumé attendu</label>
+                        <label id="labelresume" for="textlength">Quantité de sentences clés extraites attendu</label>
                         <select id="textlength" class="form-control">
                         <option selected value="0">Très court</option>
                         <option value="1">Court</option>
