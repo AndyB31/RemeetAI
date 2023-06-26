@@ -116,6 +116,40 @@
                 });
             });
         });
+        function copyToClipboard(elem) {
+            var target = elem;
+
+            // select the content
+            var currentFocus = document.activeElement;
+
+            target.focus();
+            target.setSelectionRange(0, target.value.length);
+
+            // copy the selection
+            var succeed;
+
+            try {
+            succeed = document.execCommand("copy");
+            } catch (e) {
+            console.warn(e);
+
+            succeed = false;
+            }
+
+            // Restore original focus
+            if (currentFocus && typeof currentFocus.focus === "function") {
+            currentFocus.focus();
+            }
+
+            return succeed;
+        };
+        function deleteText(elem) {
+            var target = elem;
+
+            target.innerHTML = ""
+            target.value = ""
+            
+        }
     </script>
     
 </head>
@@ -230,12 +264,21 @@
                         <label for="FormControlTextarea1">Renseignez votre texte de référence : </label>
                         <textarea class="form-control z-depth-1 rounded" id="FormControlTextarea1" rows="15" placeholder="Write/copy your text here"></textarea>
                     </div>
+                    <div class="row"> 
+                        <button class="btn btn-primary mr-2" title="Click to copy" type="button" onclick="copyToClipboard(document.getElementById('FormControlTextarea1'))">Copier</button>
+                        <button class="btn btn-primary" title="Click to copy" type="button" onclick="deleteText(document.getElementById('FormControlTextarea1'))">Supprimer le contenu</button>
+                    </div>                  
                 </div>
+             
                 <div class="col-sm right">
                     <div class="form-group shadow-textarea green-border-focus">
                         <label for="FormControlTextarea2">Votre résumé s'affiche ci-dessous : </label>
                         <textarea class="form-control z-depth-2 rounded" id="FormControlTextarea2" rows="15" placeholder="Your resume will appear here"></textarea>
                     </div>
+                    <div class="row"> 
+                        <button class="btn btn-primary mr-2" title="Click to copy" type="button" onclick="copyToClipboard(document.getElementById('FormControlTextarea2'))">Copier</button>
+                        <button class="btn btn-primary" title="Click to copy" type="button" onclick="deleteText(document.getElementById('FormControlTextarea2'))">Supprimer le contenu</button>
+                    </div>  
                     <!--script>
                         var summarize_text = summarize_text
                         document.getElementById("myTextArea").value = summarize_text;
