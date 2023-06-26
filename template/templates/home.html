@@ -51,7 +51,7 @@
             if (gen) {
                 tool = "bart"
             }
-            const url = `http://localhost:5000/summarize/${tool}`
+            const url = `http://13.53.193.177:5000/summarize/${tool}`
             const formData = new FormData(form_img)
             
             formData.append("size", size)
@@ -81,7 +81,7 @@
             const fetchOptions = {
                 method: "GET"
             }
-            const url = `http://localhost:5000/summary/${id}`
+            const url = `http://13.53.193.177:5000/summary/${id}`
             
             fetch(url, fetchOptions).then((response) => {
                 if (response.ok) {
