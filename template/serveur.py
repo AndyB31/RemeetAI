@@ -30,6 +30,6 @@ def documentation():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=4000)
+    app.run(debug=False, port=8080)
     
     

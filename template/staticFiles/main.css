@@ -177,3 +177,24 @@ figcaption {
     background: rgb(250,89,70);
     background: linear-gradient(313deg, rgba(250,89,70,1) 0%, rgba(227,39,177,1) 32%, rgba(163,56,251,1) 70%, rgba(58,44,227,1) 100%);
   }
+
+  .popup-screen {
+    height: 100%;
+    width: 100%;
+    background-color: #00000090;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999;
+  }
+
+  .popup {
+    height: 30%;
+    width: 20%;
+    background-color: #ffffff;
+    color: #272EE3;
+    margin-left: 39%;
+    margin-top: 18%;
+    text-align: center;
+  }

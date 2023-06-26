@@ -32,10 +32,13 @@ CORS(app)
 def hello_world():
   return "<p>Hello, World!</p>"
 
-def run_subprocess(tool, filename, uid, data, size):
+def run_subprocess(tool, filename, uid, data, size, text):
   # data = {}
   try:
-    transcript, transcript, _, _ = process_media.trancript(filename)
+    if len(text) > 0:
+      transcript = text
+    else:
+      transcript, _, _, _ = process_media.trancript(filename)
     print()
     if tool == "bart":
       report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])[0]["summary_text"]
@@ -61,27 +64,38 @@ def run_subprocess(tool, filename, uid, data, size):
   except Exception as e:
     data["is_done"] = True
     data["error"] = True
-    data["msg"] = str(e.args[0])
+    data["msg"] = str(e)
     print(f"{uid} => error")
 
 
 @app.post("/summarize/")
 @app.post("/summarize/<tool>")
 def summarize(tool = "bart"):
-  if not request.files['file']:
-    return {"message": "Need to upload a file"}, 400
+  if not request.files['file'] and not request.form['text']:
+    return {"message": "Need to upload a file of a text"}, 400
   
+  print("filw or text")
   if request.form["size"]:
     size = int(request.form["size"])
   else:
     size = 2
-  f = request.files['file']
-  f.save(f'../../res/data/{f.filename}')
+  try:
+    text = request.form['text']
+  except:
+    text = ""
+  if request.files['file']:
+    f = request.files['file']
+    f.save(f'../../res/data/{f.filename}')
+    filename = f.filename
+  else:
+    filename = ""
+  print("if if if")
   uid = uuid.uuid1()
   manager = Manager()
   thread = manager.dict()
   thread["is_done"] = False
-  process = Process(target=run_subprocess, args=(tool, f'../../res/data/{f.filename}', str(uid), thread, sizes_chart[size]))
+  print("process")
+  process = Process(target=run_subprocess, args=(tool, f'../../res/data/{filename}', str(uid), thread, sizes_chart[size], text))
   process.start()
   process_registry[str(uid)] = {"p": process, "data": thread} 
   return {"id": f"{uid}"}
