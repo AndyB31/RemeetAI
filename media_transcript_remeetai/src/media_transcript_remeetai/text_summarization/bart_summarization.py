@@ -111,5 +111,5 @@ def bart_sum(filename: str = None, text_base: str = None, text_length: int = 0):
         print(summary)
 
     my_translator.target = 'fr'
-    result = my_translator.translate(text=summary)
+    result = my_translator.translate(text=summary[0]["summary_text"])
     return result

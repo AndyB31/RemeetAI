@@ -64,7 +64,7 @@ def run_subprocess(tool, filename, uid, data, size, text):
   except Exception as e:
     data["is_done"] = True
     data["error"] = True
-    data["msg"] = str(e.args[0])
+    data["msg"] = str(e)
     print(f"{uid} => error")
 
 
