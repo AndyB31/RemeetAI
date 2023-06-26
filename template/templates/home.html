@@ -45,6 +45,7 @@
         async function submit() {
             // event.preventDefault();
             // const form = event.currentTarget;
+            console.log("submit started")
             const file = document.querySelector("#inputGroupFile01")
             const form_img = document.querySelector("#form-img")
             const size = document.querySelector("#textlength").value
@@ -53,6 +54,7 @@
             }
             const url = `https://838b-138-199-53-226.ngrok-free.app/summarize/${tool}`
             const formData = new FormData(form_img)
+            console.log("form created")
             
             formData.append("size", size)
 	        const text = document.querySelector("#FormControlTextarea1").value
@@ -67,7 +69,9 @@
             // let imageBlob = await new Promise(resolve => file.toBlob(resolve, file.DOCUMENT_TYPE_NODE));
             // formData.append("file", imageBlob, file.filename)
 
+            console.log("fetch start")
             fetch(url, fetchOptions).then((response) => {
+                console.log("fetch done")
                 if (response.ok) {
                     response.json().then((data) => {
                         console.log(data)
@@ -76,6 +80,8 @@
                         check_done()
                         console.log("requets done")
                     })
+                } else {
+                    alert("[Error] please try again")
                 }
             })
         }

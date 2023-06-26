@@ -74,6 +74,7 @@ def summarize(tool = "bart"):
   if not request.files['file'] and not request.form['text']:
     return {"message": "Need to upload a file of a text"}, 400
   
+  print("filw or text")
   if request.form["size"]:
     size = int(request.form["size"])
   else:
