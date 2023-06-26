@@ -46,6 +46,10 @@
             // event.preventDefault();
             // const form = event.currentTarget;
             console.log("submit started")
+
+            document.querySelector('.popup-screen').style.display = 'block';
+            document.querySelector('.loading-text').innerHTML = 'Uploading...';
+
             const file = document.querySelector("#inputGroupFile01")
             const form_img = document.querySelector("#form-img")
             const size = document.querySelector("#textlength").value
@@ -87,6 +91,7 @@
         }
         let dot = 0
         async function check_done() {
+            document.querySelector('.loading-text').innerHTML = 'Processing...';
             console.log("check")
             const fetchOptions = {
                 method: "GET"
@@ -103,8 +108,11 @@
                                 document.querySelector("#FormControlTextarea1").innerHTML = data.transcript
                             }
 			                loading = false
+                            document.querySelector('.popup-screen').style.display = 'none';
                         } else if (data.error) {
                             console.log(data.error)
+                            document.querySelector('.popup-screen').style.display = 'none';
+                            alert('Error: ' + data.error)
                         } else {
                             document.querySelector("#FormControlTextarea2").innerHTML = `Loading${'.'.repeat(dot)}`
                             dot = (dot + 1) % 7
@@ -172,6 +180,7 @@
                 <a href="https://tenor.com/view/loading-load-gif-22179079">Loading GIF</a>
                 from <a href="https://tenor.com/search/loading-gifs">Loading GIFs</a>
             </div>
+            <h3 id="loading-text">Uploading</h3>
             <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
         </div>
     </div>
