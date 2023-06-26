@@ -79,9 +79,9 @@ def summarize(tool = "bart"):
     size = int(request.form["size"])
   else:
     size = 2
-  if request.form['text']:
+  try:
     text = request.form['text']
-  else:
+  except:
     text = ""
   if request.files['file']:
     f = request.files['file']
@@ -89,10 +89,12 @@ def summarize(tool = "bart"):
     filename = f.filename
   else:
     filename = ""
+  print("if if if")
   uid = uuid.uuid1()
   manager = Manager()
   thread = manager.dict()
   thread["is_done"] = False
+  print("process")
   process = Process(target=run_subprocess, args=(tool, f'../../res/data/{filename}', str(uid), thread, sizes_chart[size], text))
   process.start()
   process_registry[str(uid)] = {"p": process, "data": thread} 
