@@ -17,10 +17,10 @@ S = 1
 X = 0
 
 sizes_chart = {
-  L: {"e": 20, "g": 1000},
-  M: {"e": 15, "g": 750},
-  S: {"e": 10, "g": 500},
-  X: {"e": 5, "g": 250},
+  L: {"e": 20, "g": 3},
+  M: {"e": 15, "g": 2},
+  S: {"e": 10, "g": 1},
+  X: {"e": 5, "g": 0},
 }
 
 
@@ -41,7 +41,7 @@ def run_subprocess(tool, filename, uid, data, size, text):
       transcript, _, _, _ = process_media.trancript(filename)
     print()
     if tool == "bart":
-      report = bart_summarization.bart_sum(text_base = transcript, max_length=size["g"])[0]["summary_text"]
+      report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])[0]["summary_text"]
     elif tool == "LexRank":
       report = lexrank_summarization.lexrank_sum(text_base = transcript, sentences_number=size["e"])
     elif tool == "LSA":
