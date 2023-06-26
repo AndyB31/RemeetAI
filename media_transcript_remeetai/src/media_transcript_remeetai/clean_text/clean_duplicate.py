@@ -42,5 +42,7 @@ def remove_duplicates(input: str) -> str:
       if intermediate_output:
           debug.print_debug(splitted_input)
           debug.print_debug(word_length)
+      if word_length > 25:
+          break
   output = splitted_input[0] #In the end you have a list of length 1, with all possible lengths of repetitive words removed
   return output

@@ -55,10 +55,10 @@
             const formData = new FormData(form_img)
             
             formData.append("size", size)
-	    const text = document.querySelector("#FormControlTextarea1").value
-	    if (text.length > 0) {
-		formData.append("text", text)
-	    }
+	        const text = document.querySelector("#FormControlTextarea1").value
+            if (text.length > 0) {
+                formData.append("text", text)
+            }
             
             const fetchOptions = {
                 method: "POST",
@@ -91,11 +91,12 @@
                 if (response.ok) {
                     response.json().then((data) => {
                         if (data.done) {
+                            console.log(data)
                             document.querySelector("#FormControlTextarea2").innerHTML = data.report
                             if (data.transcript) {
                                 document.querySelector("#FormControlTextarea1").innerHTML = data.transcript
                             }
-			    loading = false
+			                loading = false
                         } else if (data.error) {
                             console.log(data.error)
                         } else {
