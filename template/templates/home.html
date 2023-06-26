@@ -55,6 +55,10 @@
             const formData = new FormData(form_img)
             
             formData.append("size", size)
+	    const text = document.querySelector("#FormControlTextarea1").value
+	    if (text.length > 0) {
+		formData.append("text", text)
+	    }
             
             const fetchOptions = {
                 method: "POST",
@@ -91,6 +95,7 @@
                             if (data.transcript) {
                                 document.querySelector("#FormControlTextarea1").innerHTML = data.transcript
                             }
+			    loading = false
                         } else if (data.error) {
                             console.log(data.error)
                         } else {
