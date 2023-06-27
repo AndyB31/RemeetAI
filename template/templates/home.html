@@ -260,14 +260,14 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label onclick="myFunction('extract')" class="btn btn-primary active">
-                        <input  type="radio" name="options" id="option1" complete="off"  value="extract"> Extraction de sentences clés
+                        <label onclick="myFunction('synthese')" class="btn btn-primary active">
+                        <input  type="radio" name="options" id="option2" complete="off" checked value="synthese"> Génération de synthèses
                         </label>
-                        <label onclick="myFunction('synthese')" class="btn btn-primary">
-                        <input  type="radio" name="options" id="option2" autocomplete="off" checked value="synthese"> Génération de synthèses
+                        <label onclick="myFunction('extract')" class="btn btn-primary">
+                        <input  type="radio" name="options" id="option1" autocomplete="off" value="extract"> Extraction de sentences clés
                         </label>
                     </div>
-                    <div class="dropdown mt-2" id="dropdown sentences">
+                    <div class="dropdown mt-2" id="dropdown sentences" style="display: none;">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ items[0] }}
                         </button>
@@ -325,7 +325,7 @@
         
             </div>
             <hr>
-            <button onclick="submit()" type="submit" id="submit1" class="btn btn-primary mb-5" value="Extraction de sentences">Extraction de sentences</button>
+            <button onclick="submit()" type="submit" id="submit1" class="btn btn-primary mb-5" value="synthese">Génération de synthèses</button>
         </div>
     </div>
     <!-- <hr class="special-hr">
