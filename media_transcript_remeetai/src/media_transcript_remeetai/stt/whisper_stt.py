@@ -15,8 +15,8 @@ def speech_to_text(audiofile: str):
   debug.print_debug(f"Detected language: {max(probs, key=probs.get)}")
 
   options = whisper.DecodingOptions(fp16 = False)
-  # result = whisper.decode(model, mel, options)
-  result = None
+  result = whisper.decode(model, mel, options)
+  # result = None
 
   options = whisper.DecodingOptions()
   # text = model.transcribe(audiofile)
@@ -25,6 +25,8 @@ def speech_to_text(audiofile: str):
   #model.transcribe(audiofile, language="en")
 
   # print(result.text)
+  debug.print_debug(text)
+  debug.print_debug(result)
   return (result, text, text_en)
 
 # def main():
