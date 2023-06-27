@@ -16,8 +16,10 @@ def trancript(mediafile: str, audio: bool = False):
 
   t_clean = "tc"
   # t_clean = clean_duplicate.remove_duplicates(transcript2["text"])
-  t_en_clean = clean_duplicate.remove_duplicates(transcript2["text"])
+  t_en_clean = transcript2["text"]
+  # t_en_clean = clean_duplicate.remove_duplicates(transcript2["text"])
   t_clean = t_en_clean
+  debug.print_debug(f"t_clean: {t_clean}")
 
   return (t_clean, t_en_clean, transcript1, transcript2)
 
