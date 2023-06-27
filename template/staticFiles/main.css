@@ -1,0 +1,208 @@
+/* GENERAL.HTML */
+
+body {
+    background-color: #f2f2f200;
+}
+
+.jumbotron {
+    background-color: #f2f2f200;
+}
+
+.special-hr {
+    border-top: 5px solid #01406a;
+}
+/* HOME.HTML */
+
+.blue-border .form-control:focus {
+    border: 1px solid #5789e6;
+    box-shadow: 0 0 0 0.2rem rgba(186, 104, 200, .25);
+}
+
+.green-border-focus .form-control:focus {
+    border: 1px solid #8bc34a;
+    box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+}
+
+.bottom-arrow {
+    width: 50%;
+    margin: auto;
+
+    border-bottom: 5px solid #01406a;
+}
+
+.bottom-arrow:after {
+    content:'';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-top: 25px solid #01406a;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.left {
+    border-right: 1px solid #01406a;
+    border-top: 1px solid #01406a;
+    border-bottom: 1px solid #01406a;
+}
+
+.right {
+    border-top: 1px solid #01406a;
+    border-bottom: 1px solid #01406a;
+}
+
+.paramlong{
+  border-radius: 25px;
+  border: 1px solid #01406a;
+  padding: 20px;
+}
+
+.show{
+  border-radius: 25px;
+  border: 1px solid #01406a;
+  padding: 20px;
+  display: inline-block;
+
+}
+/* DOCUMENTATION.HTML */
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    height: auto;
+}
+
+figcaption {
+    text-align: center;
+}
+
+.center-div {
+    margin: 0 auto;
+    width: 70%;
+}
+
+/* ABOUTUS.HTML */
+
+.box1 {
+    position: relative;
+}
+
+.box1 img {
+    display: block;
+    margin: 0 auto;
+}
+
+.box1 figcaption {
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.25rem;
+}
+
+.aboutus {
+    font-size: 1.50rem;
+    font-weight: 350;
+}
+
+.jumbotron {
+    padding: 1rem;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #272EE3;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #A338FB;
+    color: white;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #24AAFF;
+    color: white;
+  }
+
+  .prezdiv {
+    height: 100%;
+    padding: 10%;
+    color: #fff;
+    text-align: center;
+  }
+
+  .prezdiv h1 {
+    font-size: 5.5rem;
+  }
+
+  .prezdiv h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  .prezdiv .btn-primary {
+    background-color: #24AAFF;
+    border-color: #24AAFF;
+  }
+
+  .prezdiv img {
+    transform: rotate(180deg);
+    height: 20%;
+    margin-top: 100px;
+  } 
+
+  .tooldiv {
+    background-color: #fff;
+    padding: 5%;
+  }
+
+  .docdiv {
+    height: 100%;
+    padding: 5%;
+    color: #fff;
+    text-align: center;
+    background: rgb(250,89,70);
+    background: linear-gradient(313deg, rgba(250,89,70,1) 0%, rgba(227,39,177,1) 32%, rgba(163,56,251,1) 70%, rgba(58,44,227,1) 100%);
+  }
+
+  .popup-screen {
+    height: 100%;
+    width: 100%;
+    background-color: #00000090;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 999;
+  }
+
+  .popup {
+    height: 30%;
+    width: 20%;
+    background-color: #ffffff;
+    color: #272EE3;
+    margin-left: 39%;
+    margin-top: 18%;
+    text-align: center;
+  }

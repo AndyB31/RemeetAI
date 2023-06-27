@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href='/staticFiles/main.css' />
+    <title>Home Page</title>
+        
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="/">Accueil</a>
+        <a class="active" href="#">Mode d'Emploi</a>
+        <a href="aboutus">Qui sommes-nous ?</a>
+    </div>
+    <!-- <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+            <a href="/">
+                <button class="btn btn-outline-primary" type="button">Accueil</button>
+            </a>
+            <a href="documentation">
+                <button class="btn btn-outline-success" type="button">Documentation</button>
+            </a>
+            <a href="aboutus">
+                <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+            </a>
+        </form>
+    </nav> -->
+    <div class="jumbotron docdiv">
+        <h1 class="display-4">RemeetAI : Comment cela fonctionne ? </h1>
+        <p class="lead">Curieux d'en apprendre plus sur le fonctionnement de RemeetAI ? Pas de secret entre nous.</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg mb-4" href="aboutus" role="button" style="font-size: 14px;">En apprendre plus sur l'équipe derrière le projet.</a>
+        </p>
+        <!-- <hr class=""> -->
+        <p class="mb-5">Voici un schéma simplifié qui présente le processus de création du résumé final : </p>
+        <img src="{{image}}" alt="schema simple application RemeetAI" class="center-image" style="width: 80%">
+        <figcaption class="mt-5">Schéma de création du résumé</figcaption>
+    </div>
+    <div class="container-fluid">
+        <div class="align-items-center justify-content-center text-center">
+            <h3>Pour en apprendre plus sur les algorithmes et choisir le plus adapté, c'est dessous :</h3>
+            <div class="bottom-arrow"></div>
+        </div>
+       <hr>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">Latent Semantic Analysis (LSA)</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <ul>
+                    <li>LSA renvoie les thèmes et sujets clés présents dans le texte.</li>
+                    <li>Elle fournit une vue d'ensemble des principales idées abordées dans le document.</li>
+                    <li>LSA permet d'identifier les concepts les plus importants abordés dans le texte.</li>
+                </ul>
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">TextRank</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <ul>
+                    <li>TextRank renvoie les phrases les plus importantes du texte.</li>
+                    <li>Il extrait les informations clés et met en évidence les points principaux.</li>
+                    <li>TextRank génère un résumé qui capture le contenu essentiel du document.</li>
+                </ul>
+            </div>
+           
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">LexRank</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <ul>
+                    <li>LexRank renvoie les phrases les plus représentatives du texte.</li>
+                    <li>Il sélectionne les phrases qui couvrent l'information principale de manière concise.</li>
+                    <li>LexRank fournit un résumé qui reprend les idées principales sans détails inutiles.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="form-group">
+            <h4><label for="lsaparagraph">Génération de synthèse</label></h4>
+            <div id="lsaparagraph" class="form-control rounded-pill">
+                <ul>
+                    <li>
+                        L'algorithme utilisé génère une synthèse concise en comprenant et en paraphrasant le texte.
+                    </li>
+                    <li>Il va au-delà de l'extraction de phrases et crée une synthèse avec ses propres mots.</li>
+                    <li>Il fournit une synthèse qui reprend les idées principales tout en offrant une perspective différente du texte original.</li>
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+    <!-- <hr class="special-hr"> -->
+    <!-- <div class="center-div mb-1">
+        <div class="row">
+            <div class="col text-left">
+                <a href="/">
+                    <button class="btn btn-outline-primary" type="button">Accueil</button>
+                </a>
+            </div>
+            <div class="col text-center">
+                <a href="documentation">
+                    <button class="btn btn-outline-success" type="button">Documentation</button>
+                </a>
+            </div>
+            <div class="col text-right">
+                <a href="aboutus">
+                    <button class="btn btn-outline-secondary" href="aboutus" type="button">Qui sommes-nous ?</button>
+                </a>
+            </div>
+        </div>
+    </div> -->
+    
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

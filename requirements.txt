@@ -1,0 +1,19 @@
+moviepy
+# git+https://github.com/openai/whisper.git 
+setuptools-rust
+nltk
+matplotlib
+pandas
+numpy
+seaborn
+sumy
+pytextrank
+spacy
+datasets
+transformers
+rouge
+sentencepiece
+openai
+lexrank
+Flask
+deep_translator
