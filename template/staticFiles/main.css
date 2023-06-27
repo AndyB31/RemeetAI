@@ -59,6 +59,14 @@ body {
   border: 1px solid #01406a;
   padding: 20px;
 }
+
+.show{
+  border-radius: 25px;
+  border: 1px solid #01406a;
+  padding: 20px;
+  display: inline-block;
+
+}
 /* DOCUMENTATION.HTML */
 
 .center-image {
