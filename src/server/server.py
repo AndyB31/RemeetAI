@@ -41,7 +41,7 @@ def run_subprocess(tool, filename, uid, data, size, text):
       transcript, _, _, _ = process_media.trancript(filename)
     print()
     if tool == "bart":
-      report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])[0]["summary_text"]
+      report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])
     elif tool == "LexRank":
       report = lexrank_summarization.lexrank_sum(text_base = transcript, sentences_number=size["e"])
     elif tool == "LSA":
