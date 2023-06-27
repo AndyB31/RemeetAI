@@ -68,7 +68,7 @@ def textrank_sum(filename: str = None, text_base: str = None, outpath: str = Non
     sentenced_summary_textrank = []
     for sentence in summary_textrank:
         debug.print_debug(sentence)
-    sentenced_summary_textrank.append(str(sentence))
+        sentenced_summary_textrank.append(str(sentence))
 
     if outpath:
         # Open a new file in write mode
