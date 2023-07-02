@@ -84,11 +84,11 @@ def run_subprocess_chunk(tool, filename, uid, data, size, text):
 def run_subprocess(tool, filename, uid, data, size, text):
   # data = {}
   try:
-    if len(text) > 0:
-      transcript = text
-    else:
+    if len(filename) > 0:
       audio = filename.split('.')[-1] in ['mp3', 'wav']
       transcript, _, _, _ = process_media.trancript(filename, audio=audio)
+    else:
+      transcript = text
     # data["report"] = "test"
     # data["transcript"] = "transcript"
     # data["is_done"] = True
@@ -141,12 +141,9 @@ def summarize(tool = "bart"):
   except:
     text = ""
   try:
-    if len(text) < 1:
-      f = request.files['file']
-      f.save(f'../../res/data/{f.filename}')
-      filename = f.filename
-    else:
-      filename = ""
+    f = request.files['file']
+    f.save(f'../../res/data/{f.filename}')
+    filename = f.filename
   except:
     filename = ""
   print("if if if")
