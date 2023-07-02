@@ -206,3 +206,11 @@ figcaption {
     margin-top: 18%;
     text-align: center;
   }
+
+  .hide-gif {
+    position: absolute;
+    width: 20%;
+    height: 4.7%;
+    z-index: 999;
+    background-color: white;
+  }

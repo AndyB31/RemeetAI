@@ -10,7 +10,7 @@ def trancript(mediafile: str, audio: bool = False):
     afilename = audiofile.split('/')[-1]
     afilepath = audiofile.replace(f"/{afilename}", "")
     audio_clip, i = extract_audio.extract_audio(mediafile, outfilepath=afilepath, outfilename=afilename)
-    audiofile = f"1_{audiofile}"
+    audiofile = f"{afilepath}/1_{afilename}"
   else:
     audiofile = mediafile
   debug.print_debug(f"audiofile: {audiofile}")
@@ -19,7 +19,7 @@ def trancript(mediafile: str, audio: bool = False):
 
   t_clean = "tc"
   # t_clean = clean_duplicate.remove_duplicates(transcript2["text"])
-  t_en_clean = transcript2["text"]
+  t_en_clean = transcript2
   # t_en_clean = clean_duplicate.remove_duplicates(transcript2["text"])
   t_clean = t_en_clean
   debug.print_debug(f"t_clean: {t_clean}")
