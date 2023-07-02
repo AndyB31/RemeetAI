@@ -11,7 +11,7 @@
         let tool = "LSA";
         let id = "";
         let loading = false;
-        let gen = false
+        let gen = true;
         function myFunction(value) {
             if (value === "extract") {
                 gen = false;
@@ -58,7 +58,7 @@
             if (gen) {
                 tool = "bart"
             }
-            const url = `https://15ad-138-199-53-226.ngrok-free.app/summarize/${tool}`
+            const url = `http://api.remeet-ai.com:5000/summarize/${tool}`
             const formData = new FormData(form_img)
             console.log("form created")
             
@@ -98,7 +98,7 @@
             const fetchOptions = {
                 method: "GET"
             }
-            const url = `https://15ad-138-199-53-226.ngrok-free.app/summary/${id}`
+            const url = `http://api.remeet-ai.com:5000/summary/${id}`
             
             fetch(url, fetchOptions).then((response) => {
                 if (response.ok) {
