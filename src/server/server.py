@@ -32,13 +32,72 @@ CORS(app)
 def hello_world():
   return "<p>Hello, World!</p>"
 
+def run_subprocess_chunk(tool, filename, uid, data, size, text):
+  # data = {}
+  try:
+    if len(text) > 0:
+      transcript = text
+    else:
+      audio = filename.split('.')[-1] in ['mp3', 'wav']
+      if audio:
+        transcript, _, _, _ = process_media.trancript(filename, audio=audio)
+      else:
+        it = process_media.iter_transcript_chunk(filename)
+        i = 0
+        for trscpt in it:
+          print(f"chunk_{i}")
+          i += 1
+    data["report"] = "test"
+    data["transcript"] = "transcript"
+    data["is_done"] = True
+    data["error"] = False
+    print(f"{uid} => done")
+    return
+    
+    print()
+    if tool == "bart":
+      report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])
+    elif tool == "LexRank":
+      report = lexrank_summarization.lexrank_sum(text_base = transcript, sentences_number=size["e"])
+    elif tool == "LSA":
+      report = textrank_lsa.lsa_sum(text_base = transcript, sentences_number=size["e"])
+    elif tool == "TextRank":
+      report = textrank_lsa.textrank_sum(text_base = transcript, sentences_number=size["e"])
+
+    # thread[uid]["report"] = report
+    # thread[uid]["is_done"] = True
+    # thread[uid]["error"] = False
+    # try:
+    #   report = json.dumps(report)
+    # except:
+      
+    data["report"] = report
+    data["transcript"] = transcript
+    data["is_done"] = True
+    data["error"] = False
+    print(f"{uid} => done")
+  except Exception as e:
+    data["is_done"] = True
+    data["error"] = True
+    data["msg"] = str(e)
+    print(f"{uid} => error")
+
+
 def run_subprocess(tool, filename, uid, data, size, text):
   # data = {}
   try:
     if len(text) > 0:
       transcript = text
     else:
-      transcript, _, _, _ = process_media.trancript(filename)
+      audio = filename.split('.')[-1] in ['mp3', 'wav']
+      transcript, _, _, _ = process_media.trancript(filename, audio=audio)
+    # data["report"] = "test"
+    # data["transcript"] = "transcript"
+    # data["is_done"] = True
+    # data["error"] = False
+    # print(f"{uid} => done")
+    # return
+    
     print()
     if tool == "bart":
       report = bart_summarization.bart_sum(text_base = transcript, text_length=size["g"])
@@ -74,10 +133,10 @@ def summarize(tool = "bart"):
   if not request.files['file'] and not request.form['text']:
     return {"message": "Need to upload a file of a text"}, 400
   
-  print("filw or text")
-  if request.form["size"]:
+  print("file or text")
+  try:
     size = int(request.form["size"])
-  else:
+  except:
     size = 2
   try:
     text = request.form['text']

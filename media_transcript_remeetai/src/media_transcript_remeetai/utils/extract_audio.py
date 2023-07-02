@@ -1,14 +1,29 @@
 #!/bin/python
 import sys
 import moviepy.editor as mp
+from moviepy.audio.AudioClip import AudioArrayClip
 from typing import Type
 
-def extract_audio(filepath: str, outfilepath: str = None) -> Type[mp.AudioFileClip]:
+# chunk_size in second define length of subclips
+def extract_audio(filepath: str, outfilepath: str = None, outfilename: str = None, chunk: bool = False, chunk_size: int = 60) -> Type[mp.AudioFileClip]:
   clip = mp.VideoFileClip(filepath)
 
-  if outfilepath:
-    clip.audio.write_audiofile(outfilepath)
-  return clip.audio
+  i = 1
+  clips = []
+  if chunk:
+    fps = clip.audio.fps
+    its = clip.audio.iter_chunks(chunk_duration=chunk_size)
+    for it in its:
+      aaclip = AudioArrayClip(it, fps=fps)
+      clips.append(aaclip)
+      if outfilepath:
+        aaclip.write_audiofile(f"{outfilepath}/{i}_{outfilename}")
+      i += 1
+  else:
+    clips.append(clip.audio)
+    if outfilepath:
+      clip.audio.write_audiofile(f"{outfilepath}/1_{outfilename}")
+  return (clips, i)
 
 # def main():
 #   if len(sys.argv) < 2:
