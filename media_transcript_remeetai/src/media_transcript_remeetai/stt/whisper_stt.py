@@ -4,7 +4,7 @@ from typing import Type
 from ..utils import debug
 
 def speech_to_text(audiofile: str):
-  model = whisper.load_model("small")
+  model = whisper.load_model("tiny")
 
   audio = whisper.load_audio(audiofile)
   audio = whisper.pad_or_trim(audio)
