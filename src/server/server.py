@@ -84,7 +84,7 @@ def run_subprocess_chunk(tool, filename, uid, data, size, text):
 def run_subprocess(tool, filename, uid, data, size, text):
   # data = {}
   try:
-    if len(filename) > 0:
+    if filename:
       audio = filename.split('.')[-1] in ['mp3', 'wav']
       transcript, _, _, _ = process_media.trancript(filename, audio=audio)
     else:
@@ -121,8 +121,9 @@ def run_subprocess(tool, filename, uid, data, size, text):
   except Exception as e:
     data["is_done"] = True
     data["error"] = True
-    data["msg"] = str(e)
+    data["msg"] = str("Une erreur est survenue. Rafraichissez la page.")
     print(f"{uid} => error")
+    print(f"{e}")
 
 
 @app.post("/summarize/")
@@ -137,15 +138,16 @@ def summarize(tool = "bart"):
   except:
     size = 2
   try:
-    text = request.form['text']
-  except:
-    text = ""
-  try:
     f = request.files['file']
     f.save(f'../../res/data/{f.filename}')
     filename = f.filename
+    print(filename)
   except:
-    filename = ""
+    filename = None
+  try:
+    text = request.form['text']
+  except:
+    text = None
   print("if if if")
   uid = uuid.uuid1()
   manager = Manager()
