@@ -23,8 +23,6 @@ sizes_chart = {
   X: {"e": 2, "g": 0},
 }
 
-
-
 app = Flask(__name__)
 CORS(app)
 
@@ -142,11 +140,14 @@ def summarize(tool = "bart"):
     text = request.form['text']
   except:
     text = ""
-  if request.files['file']:
-    f = request.files['file']
-    f.save(f'../../res/data/{f.filename}')
-    filename = f.filename
-  else:
+  try:
+    if len(text) < 1:
+      f = request.files['file']
+      f.save(f'../../res/data/{f.filename}')
+      filename = f.filename
+    else:
+      filename = ""
+  except:
     filename = ""
   print("if if if")
   uid = uuid.uuid1()

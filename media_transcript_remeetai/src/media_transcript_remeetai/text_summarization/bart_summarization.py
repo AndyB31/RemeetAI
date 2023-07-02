@@ -57,7 +57,7 @@ def bart_sum(filename: str = None, text_base: str = None, text_length: int = 0):
     elif text_length == 2:
         param_grid = [420,140]
     else:
-        text_length = [560,210]
+        param_grid = [560,210]
         
     if not filename and not text_base:
         raise Exception("filename or text must be specified.")
