@@ -86,7 +86,7 @@ def run_subprocess(tool, filename, uid, data, size, text):
   try:
     if filename:
       audio = filename.split('.')[-1] in ['mp3', 'wav']
-      transcript, _, _, _ = process_media.trancript(filename, audio=audio)
+      transcript, _, _, _ = process_media.trancript(f'../../res/data/{filename}', audio=audio)
     else:
       transcript = text
     # data["report"] = "test"
@@ -154,7 +154,7 @@ def summarize(tool = "bart"):
   thread = manager.dict()
   thread["is_done"] = False
   print("process")
-  process = Process(target=run_subprocess, args=(tool, f'../../res/data/{filename}', str(uid), thread, sizes_chart[size], text))
+  process = Process(target=run_subprocess, args=(tool, filename, str(uid), thread, sizes_chart[size], text))
   process.start()
   process_registry[str(uid)] = {"p": process, "data": thread} 
   return {"id": f"{uid}"}
