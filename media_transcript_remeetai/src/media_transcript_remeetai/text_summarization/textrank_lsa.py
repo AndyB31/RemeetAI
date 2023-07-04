@@ -36,9 +36,9 @@ def lsa_sum(filename: str = None, text_base: str = None, outpath: str = None, se
     parser = PlaintextParser.from_string(text, Tokenizer("english"))
     summarizer_lsa = LsaSummarizer()
     summary_lsa = summarizer_lsa(parser.document, sentences_number) #  user input sentences number
-    text_summary_lsa = ""
+    text_summary_lsa = []
     for sentence in summary_lsa:
-        text_summary_lsa += str(sentence)
+        text_summary_lsa.append(str(sentence) + "\n")
     debug.print_debug("Summary by LsaSummarizer:")
     debug.print_debug(text_summary_lsa)
 
@@ -48,7 +48,7 @@ def lsa_sum(filename: str = None, text_base: str = None, outpath: str = None, se
             # Write each string in the list to a separate line
             for sentence in summary_lsa:
                 fp.write(str(sentence) + "\n")
-    return text_summary_lsa
+    return  "\n".text_summary_lsa
 
 def textrank_sum(filename: str = None, text_base: str = None, outpath: str = None, sentences_number: int = 5):
     if not filename and not text_base:

@@ -214,3 +214,14 @@ figcaption {
     z-index: 999;
     background-color: white;
   }
+
+  .custom-file-delete {
+    color: white;
+    height: 36px;
+    text-align: center;
+    width: 36px;
+    background-color: #dc3545;
+    border-radius: 14%;
+    font-size: 25px;
+    margin-left: 10px;
+  }
